@@ -26,3 +26,7 @@ class Consumer:
         self.buffer = buffer
         self.get_freq = get_freq
         self.move_freq = move_freq
+    def move(self,buffer):
+        self.buffer.move(buffer)
+    def get(self):
+        self.buffer.get()
