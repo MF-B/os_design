@@ -12,3 +12,15 @@ class Buffer:
         if not self.data.empty():
             return self.data.get()
         return None
+    
+
+class Producer:
+    def __init__(self, buffer, put_freq=2):
+        self.buffer = buffer
+        self.put_freq = put_freq
+
+class Consumer:
+    def __init__(self, buffer, get_freq=2, move_freq=2):
+        self.buffer = buffer
+        self.get_freq = get_freq
+        self.move_freq = move_freq
