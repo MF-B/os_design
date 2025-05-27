@@ -14,7 +14,6 @@ def producer_thread(buffer1, put_freq):
     producer = Producer(buffer1, put_freq)
     while True:
         producer.put()
-        time.sleep(1/put_freq)
 
 def consumer_thread(source_buffer, target_buffer, get_freq, move_freq, consumer_id):
     """消费者线程函数"""
@@ -30,14 +29,12 @@ def consumer_thread(source_buffer, target_buffer, get_freq, move_freq, consumer_
         print(f"消费者 {consumer_id} 的移动线程 {sub_thread_id} 启动")
         while True:
             consumer.move(target_buffer)
-            time.sleep(1/move_freq)
     
     def get_thread():
         sub_thread_id = threading.current_thread().ident
         print(f"消费者 {consumer_id} 的获取线程 {sub_thread_id} 启动")
         while True:
             consumer.get()
-            time.sleep(1/get_freq)
     
     # 启动子线程
     move_t = threading.Thread(target=move_thread)
@@ -62,32 +59,32 @@ def print_buffer_status(buffer1, buffer2, buffer3):
 
 def main():
     # 缓冲区大小设置
-    size_buffer1 = 4
-    size_buffer2 = 8
-    size_buffer3 = 8
+    size_buffer1 = 8
+    size_buffer2 = 4
+    size_buffer3 = 4
     
     # 频率设置
-    put_freq = 4
+    put_freq = 8
     c1_get_freq = 1
     c2_get_freq = 1
-    c1_move_freq = 1
-    c2_move_freq = 1
+    c1_move_freq = 4
+    c2_move_freq = 4
     
     # 创建缓冲区
-    buffer1 = Buffer(size_buffer1)
-    buffer2 = Buffer(size_buffer2)
-    buffer3 = Buffer(size_buffer3)
+    buffer1 = Buffer(size_buffer1, 1)
+    buffer2 = Buffer(size_buffer2, 2)
+    buffer3 = Buffer(size_buffer3, 3)
     
     # 创建线程
     p_thread = threading.Thread(target=producer_thread, 
                               args=(buffer1, put_freq))
     
     c1_thread = threading.Thread(target=consumer_thread, 
-                               args=(buffer1, buffer2, 
+                               args=(buffer2, buffer1, 
                                      c1_get_freq, c1_move_freq, 1))
     
     c2_thread = threading.Thread(target=consumer_thread, 
-                               args=(buffer1, buffer3,
+                               args=(buffer3, buffer1,
                                      c2_get_freq, c2_move_freq, 2))
     
     # 设置为守护线程，这样主线程退出时这些线程也会退出
