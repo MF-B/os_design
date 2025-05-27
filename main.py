@@ -3,10 +3,6 @@ import os
 import time
 from buffer import Buffer, Producer, Consumer
 
-buffer1_lock = threading.Lock()
-buffer2_lock = threading.Lock()
-buffer3_lock = threading.Lock()
-
 def producer_thread(buffer1, put_freq):
     """生产者线程函数"""
     thread_id = threading.current_thread().ident
@@ -52,10 +48,12 @@ def consumer_thread(source_buffer, target_buffer, get_freq, move_freq, consumer_
 
 def print_buffer_status(buffer1, buffer2, buffer3):
     """打印所有缓冲区状态"""
-    print("\n当前缓冲区状态:")
-    print(f"缓冲区1: {buffer1}")
-    print(f"缓冲区2: {buffer2}")
-    print(f"缓冲区3: {buffer3}\n")
+    # 获取所有锁，确保状态一致性
+    with buffer1.lock, buffer2.lock, buffer3.lock:
+        print("\n当前缓冲区状态:")
+        print(f"缓冲区1: {buffer1}")
+        print(f"缓冲区2: {buffer2}")
+        print(f"缓冲区3: {buffer3}\n")
 
 def main():
     # 缓冲区大小设置
