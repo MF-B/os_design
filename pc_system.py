@@ -24,7 +24,7 @@ class WorkerSignals(QObject):
     """定义信号类，用于线程和主UI通信"""
     buffer_update = pyqtSignal(str, str, str)
     log_message = pyqtSignal(str)
-
+    data_flow = pyqtSignal(str, str)  # 新增：数据流动信号
 
 class ProducerConsumerSystem:
     """系统逻辑类，管理缓冲区和线程"""
@@ -54,15 +54,7 @@ class ProducerConsumerSystem:
     def _setup_ui_logging(self):
         """配置logging模块,使其日志消息通过信号发送到UI"""
         qt_handler = QtLogHandler(self.signals.log_message)
-        qt_handler.setLevel(logging.INFO)  # 你可以根据需要设置不同的日志级别
-
-        """
-        将处理器添加到根logger,以捕获所有模块的日志
-        或者你可以选择性地添加到特定的logger,例如:
-        logging.getLogger('buffer').addHandler(qt_handler)
-        logging.getLogger(__name__).addHandler(qt_handler) # __name__ 在这里是 'pc_system'
-        logging.getLogger().addHandler(qt_handler)
-        """
+        qt_handler.setLevel(logging.INFO)
         logging.getLogger().addHandler(qt_handler)
     
     def start_system(self):
@@ -94,15 +86,11 @@ class ProducerConsumerSystem:
         c1_thread.start()
         c2_thread.start()
 
-        # 启动状态更新线程
-        status_thread = threading.Thread(target=self.update_status)
-        status_thread.daemon = True
-        status_thread.start()
-        self.threads.append(status_thread)
-
         log_msg = "系统已启动"
         self.signals.log_message.emit(log_msg)
         logger.info(log_msg)
+        # 初始状态更新
+        self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
     
     def stop_system(self):
         """停止系统"""
@@ -121,9 +109,17 @@ class ProducerConsumerSystem:
         self.signals.log_message.emit(log_msg)
         logger.info(log_msg)
         producer = Producer(self.buffer1, self.put_freq)
+        
         while self.running:
-            producer.set_put_freq(self.put_freq)
-            producer.put()
+            try:
+                data = producer.put()
+                if data:
+                    # 发送流动动画信号
+                    self.signals.data_flow.emit(str(data), 'produce')
+                    self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
+            except Exception as e:
+                logger.error(f"生产者线程错误: {e}", exc_info=True)
+                time.sleep(1)
     
     def consumer_thread(self, source_buffer, target_buffer, get_freq, move_freq, consumer_id):
         """消费者线程函数"""
@@ -142,8 +138,18 @@ class ProducerConsumerSystem:
             self.signals.log_message.emit(move_log_msg)
             logger.info(move_log_msg)
             while self.running:
-                consumer.set_move_freq(move_freq)
-                consumer.move(target_buffer)
+                try:
+                    data = consumer.move(target_buffer)
+                    if data:
+                        # 根据消费者ID发送不同的流动动画
+                        if consumer_id == 1:
+                            self.signals.data_flow.emit(str(data), 'move_to_2')
+                        else:
+                            self.signals.data_flow.emit(str(data), 'move_to_3')
+                        self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
+                except Exception as e:
+                    logger.error(f"消费者 {consumer_id} MOVE线程错误: {e}", exc_info=True)
+                    time.sleep(1)
         
         def get_thread():
             sub_thread_id = threading.current_thread().ident
@@ -151,8 +157,18 @@ class ProducerConsumerSystem:
             self.signals.log_message.emit(get_log_msg)
             logger.info(get_log_msg)
             while self.running:
-                consumer.set_get_freq(get_freq)
-                consumer.get()
+                try:
+                    data = consumer.get()
+                    if data:
+                        # 根据消费者ID发送不同的流动动画
+                        if consumer_id == 1:
+                            self.signals.data_flow.emit(str(data), 'consume_1')
+                        else:
+                            self.signals.data_flow.emit(str(data), 'consume_2')
+                        self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
+                except Exception as e:
+                    logger.error(f"消费者 {consumer_id} GET线程错误: {e}", exc_info=True)
+                    time.sleep(1)
         
         # 启动子线程
         move_t = threading.Thread(target=move_thread)
@@ -171,17 +187,6 @@ class ProducerConsumerSystem:
         while self.running:
             time.sleep(0.1)
     
-    def update_status(self):
-        """更新状态线程"""
-        while self.running:
-            time.sleep(0.1)  # 每100ms秒更新一次
-            buffer1_str = str(self.buffer1)
-            buffer2_str = str(self.buffer2)
-            buffer3_str = str(self.buffer3)
-                
-            # 发送信号更新UI
-            self.signals.buffer_update.emit(buffer1_str, buffer2_str, buffer3_str)
-    
     def update_producer_freq(self, value):
         """更新生产者频率"""
         self.put_freq = value
@@ -190,11 +195,7 @@ class ProducerConsumerSystem:
         logger.info(log_msg)
     
     def update_consumer_freq(self, consumer_id, freq_type, value):
-        """更新消费者频率
-        consumer_id: 1 或 2
-        freq_type: 'get' 或 'move'
-        value: 新的频率值
-        """
+        """更新消费者频率"""
         if consumer_id == 1:
             if freq_type == 'get':
                 self.c1_get_freq = value
@@ -212,7 +213,6 @@ class ProducerConsumerSystem:
     
     def resize_buffer(self, buffer_id, size):
         """调整缓冲区大小"""
-        
         target_buffer = None
         if buffer_id == 1:
             target_buffer = self.buffer1
@@ -240,10 +240,9 @@ class ProducerConsumerSystem:
             log_msg = f"缓冲区 {buffer_id} 大小已成功调整为: {size}。"
             self.signals.log_message.emit(log_msg)
             logger.info(log_msg)
+            self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
         else:
-            # 此情况主要用于 Buffer.resize 内部发现问题 (例如，无效大小),
-            # 尽管 pc_system 也已检查。
-            # Buffer.resize 方法本身会记录其警告。
             log_msg = f"尝试调整缓冲区 {buffer_id} 大小为 {size}，但操作未完成 (详见缓冲区日志)。"
             self.signals.log_message.emit(log_msg)
             logger.warning(log_msg)
+            self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))

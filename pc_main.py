@@ -1,5 +1,5 @@
 import sys
-import logging # 新增导入
+import logging
 from PyQt6.QtWidgets import QApplication
 from pc_ui import ProducerConsumerUI
 from pc_system import ProducerConsumerSystem
@@ -18,6 +18,7 @@ class ProducerConsumerApp:
         # 连接系统信号到UI更新
         self.system.signals.buffer_update.connect(self.ui.update_buffer_display)
         self.system.signals.log_message.connect(self.ui.append_log)
+        self.system.signals.data_flow.connect(self.ui.animate_data_flow)  # 新增连接
         
         # 连接UI控件到系统功能
         self.ui.start_btn.clicked.connect(self.toggle_system)
@@ -57,12 +58,12 @@ class ProducerConsumerApp:
 
 
 if __name__ == "__main__":
-    # 配置日志记录 (与 main.py 类似)
+    # 配置日志记录
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(threadName)s - %(levelname)s - %(message)s',
                         handlers=[
-                            logging.FileHandler("system.log"), # 日志写入文件
-                            logging.StreamHandler()        # 日志输出到控制台
+                            logging.FileHandler("system.log"),
+                            logging.StreamHandler()
                         ])
 
     app = QApplication(sys.argv)
