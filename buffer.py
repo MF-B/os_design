@@ -69,7 +69,8 @@ class Buffer:
             return True
     
     def __str__(self):
-        return f"Buffer{self.id} {list(self.data)}"
+        with self.condition:
+            return f"Buffer{self.id} {list(self.data)}"
 
 class Producer:
     def __init__(self, buffer, put_freq=2):
