@@ -9,6 +9,11 @@ class WorkerSignals(QObject):
     buffer_update = pyqtSignal(str, str, str)
     log_message = pyqtSignal(str)
 
+class freq_updata(QObject):
+    put_freq_update = pyqtSignal()
+    move_freq_update = pyqtSignal()
+    get_freq_update = pyqtSignal()
+
 class ProducerConsumerUI(QMainWindow):
     """生产者-消费者系统UI定义"""
     def __init__(self):
@@ -62,6 +67,7 @@ class ProducerConsumerUI(QMainWindow):
         self.producer_freq.setRange(1, 10)
         self.producer_freq.setValue(2)
         params_layout.addWidget(self.producer_freq, 1, 1)
+
         
         # 消费者1频率
         params_layout.addWidget(QLabel("消费者1获取频率:"), 1, 2)

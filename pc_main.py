@@ -10,7 +10,6 @@ class ProducerConsumerApp:
         # 创建UI和系统实例
         self.ui = ProducerConsumerUI()
         self.system = ProducerConsumerSystem()
-        
         # 连接信号和槽
         self.setup_connections()
         

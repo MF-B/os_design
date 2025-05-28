@@ -25,6 +25,7 @@ class WorkerSignals(QObject):
     buffer_update = pyqtSignal(str, str, str)
     log_message = pyqtSignal(str)
 
+
 class ProducerConsumerSystem:
     """系统逻辑类，管理缓冲区和线程"""
     def __init__(self):
@@ -120,8 +121,8 @@ class ProducerConsumerSystem:
         self.signals.log_message.emit(log_msg)
         logger.info(log_msg)
         producer = Producer(self.buffer1, self.put_freq)
-        
         while self.running:
+            producer.set_put_freq(self.put_freq)
             producer.put()
     
     def consumer_thread(self, source_buffer, target_buffer, get_freq, move_freq, consumer_id):
@@ -141,6 +142,7 @@ class ProducerConsumerSystem:
             self.signals.log_message.emit(move_log_msg)
             logger.info(move_log_msg)
             while self.running:
+                consumer.set_move_freq(move_freq)
                 consumer.move(target_buffer)
         
         def get_thread():
@@ -149,6 +151,7 @@ class ProducerConsumerSystem:
             self.signals.log_message.emit(get_log_msg)
             logger.info(get_log_msg)
             while self.running:
+                consumer.set_get_freq(get_freq)
                 consumer.get()
         
         # 启动子线程
