@@ -867,3 +867,48 @@
 2025-05-28 17:39:53,491 - Thread-4 (move_thread) - INFO - Consumer moved 'N' from Buffer 1 to Buffer 2
 2025-05-28 17:39:53,492 - Thread-7 (get_thread) - INFO - Consumer got '4' from Buffer 3
 2025-05-28 17:39:53,492 - Thread-6 (move_thread) - INFO - Consumer moved '1' from Buffer 1 to Buffer 3
+2025-05-28 18:15:35,300 - MainThread - INFO - Buffer 1 initialized with size 8
+2025-05-28 18:15:35,300 - MainThread - INFO - Buffer 2 initialized with size 4
+2025-05-28 18:15:35,300 - MainThread - INFO - Buffer 3 initialized with size 4
+2025-05-28 18:15:36,905 - Thread-1 (producer_thread) - INFO - 生产者线程 140566612399808 启动
+2025-05-28 18:15:36,906 - Thread-2 (consumer_thread) - INFO - 消费者线程 1 140566604007104 启动
+2025-05-28 18:15:36,906 - Thread-3 (consumer_thread) - INFO - 消费者线程 2 140566595614400 启动
+2025-05-28 18:15:36,907 - MainThread - INFO - 系统已启动
+2025-05-28 18:15:36,907 - Thread-1 (producer_thread) - INFO - Producer initialized for Buffer 1 with put_freq 4
+2025-05-28 18:15:36,907 - Thread-2 (consumer_thread) - INFO - Consumer initialized for Buffer 2 with get_freq 1, move_freq 2
+2025-05-28 18:15:36,907 - Thread-3 (consumer_thread) - INFO - Consumer initialized for Buffer 3 with get_freq 1, move_freq 2
+2025-05-28 18:15:36,908 - Thread-4 (move_thread) - INFO - 消费者 1 的MOVE线程 140566587221696 启动
+2025-05-28 18:15:36,909 - Thread-5 (get_thread) - INFO - 消费者 1 的GET线程 140566578828992 启动
+2025-05-28 18:15:36,909 - Thread-6 (move_thread) - INFO - 消费者 2 的MOVE线程 140566092314304 启动
+2025-05-28 18:15:36,910 - Thread-7 (get_thread) - INFO - 消费者 2 的GET线程 140566083921600 启动
+2025-05-28 18:15:37,158 - Thread-1 (producer_thread) - INFO - Producer put 'y' into Buffer 1
+2025-05-28 18:15:37,409 - Thread-1 (producer_thread) - INFO - Producer put 'M' into Buffer 1
+2025-05-28 18:15:37,410 - Thread-4 (move_thread) - INFO - Consumer moved 'y' from Buffer 1 to Buffer 2
+2025-05-28 18:15:37,412 - Thread-6 (move_thread) - INFO - Consumer moved 'M' from Buffer 1 to Buffer 3
+2025-05-28 18:15:37,659 - Thread-1 (producer_thread) - INFO - Producer put 'f' into Buffer 1
+2025-05-28 18:15:37,910 - Thread-1 (producer_thread) - INFO - Producer put '8' into Buffer 1
+2025-05-28 18:15:37,910 - Thread-4 (move_thread) - INFO - Consumer moved 'f' from Buffer 1 to Buffer 2
+2025-05-28 18:15:37,911 - Thread-5 (get_thread) - INFO - Consumer got 'y' from Buffer 2
+2025-05-28 18:15:37,912 - Thread-7 (get_thread) - INFO - Consumer got 'M' from Buffer 3
+2025-05-28 18:15:37,912 - Thread-6 (move_thread) - INFO - Consumer moved '8' from Buffer 1 to Buffer 3
+2025-05-28 18:15:38,161 - Thread-1 (producer_thread) - INFO - Producer put 'v' into Buffer 1
+2025-05-28 18:15:38,411 - Thread-1 (producer_thread) - INFO - Producer put 'K' into Buffer 1
+2025-05-28 18:15:38,411 - Thread-4 (move_thread) - INFO - Consumer moved 'v' from Buffer 1 to Buffer 2
+2025-05-28 18:15:38,412 - Thread-6 (move_thread) - INFO - Consumer moved 'K' from Buffer 1 to Buffer 3
+2025-05-28 18:15:38,662 - Thread-1 (producer_thread) - INFO - Producer put 'J' into Buffer 1
+2025-05-28 18:15:38,912 - Thread-5 (get_thread) - INFO - Consumer got 'f' from Buffer 2
+2025-05-28 18:15:38,912 - Thread-1 (producer_thread) - INFO - Producer put 'f' into Buffer 1
+2025-05-28 18:15:38,912 - Thread-4 (move_thread) - INFO - Consumer moved 'J' from Buffer 1 to Buffer 2
+2025-05-28 18:15:38,912 - Thread-6 (move_thread) - INFO - Consumer moved 'f' from Buffer 1 to Buffer 3
+2025-05-28 18:15:38,913 - Thread-7 (get_thread) - INFO - Consumer got '8' from Buffer 3
+2025-05-28 18:15:39,163 - Thread-1 (producer_thread) - INFO - Producer put 'q' into Buffer 1
+2025-05-28 18:15:39,414 - Thread-4 (move_thread) - INFO - Consumer moved 'q' from Buffer 1 to Buffer 2
+2025-05-28 18:15:39,414 - Thread-1 (producer_thread) - INFO - Producer put '2' into Buffer 1
+2025-05-28 18:15:39,414 - Thread-6 (move_thread) - INFO - Consumer moved '2' from Buffer 1 to Buffer 3
+2025-05-28 18:15:39,665 - Thread-1 (producer_thread) - INFO - Producer put '5' into Buffer 1
+2025-05-28 18:15:39,739 - MainThread - INFO - 系统已停止
+2025-05-28 18:15:39,912 - Thread-5 (get_thread) - INFO - Consumer got 'v' from Buffer 2
+2025-05-28 18:15:39,914 - Thread-7 (get_thread) - INFO - Consumer got 'K' from Buffer 3
+2025-05-28 18:15:39,915 - Thread-4 (move_thread) - INFO - Consumer moved '5' from Buffer 1 to Buffer 2
+2025-05-28 18:15:39,915 - Thread-1 (producer_thread) - INFO - Producer put 'Y' into Buffer 1
+2025-05-28 18:15:39,915 - Thread-6 (move_thread) - INFO - Consumer moved 'Y' from Buffer 1 to Buffer 3
