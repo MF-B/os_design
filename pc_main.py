@@ -19,6 +19,7 @@ class ProducerConsumerApp:
         # 连接系统信号到UI更新
         self.system.signals.buffer_update.connect(self.ui.update_buffer_display)
         self.system.signals.log_message.connect(self.ui.append_log)
+        self.system.signals.data_flow.connect(self.ui.show_data_flow)  # 添加这行连接数据流动信号
         
         # 连接UI控件到系统功能
         self.ui.start_btn.clicked.connect(self.toggle_system)

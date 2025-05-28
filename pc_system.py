@@ -24,6 +24,7 @@ class WorkerSignals(QObject):
     """定义信号类，用于线程和主UI通信"""
     buffer_update = pyqtSignal(str, str, str)
     log_message = pyqtSignal(str)
+    data_flow = pyqtSignal(str, str, str)  # 新增：数据流动信号 (data, source, target)
 
 class ProducerConsumerSystem:
     """系统逻辑类，管理缓冲区和线程"""
@@ -125,11 +126,13 @@ class ProducerConsumerSystem:
         
         while self.running:
             try:
-                if producer.put():
+                data = producer.put()
+                if data:
+                    # 发送数据流动信号
+                    self.signals.data_flow.emit(data, "producer", "buffer1")
                     self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
             except Exception as e:
                 logger.error(f"生产者线程错误: {e}", exc_info=True)
-                # 根据需要决定是否因为错误停止线程或继续
                 time.sleep(1) # 避免快速失败循环
     
     def consumer_thread(self, source_buffer, target_buffer, get_freq, move_freq, consumer_id):
@@ -150,7 +153,16 @@ class ProducerConsumerSystem:
             logger.info(move_log_msg)
             while self.running:
                 try:
-                    if consumer.move(target_buffer):
+                    data = consumer.move(target_buffer)
+                    if data:
+                        # 发送数据流动信号
+                        if target_buffer == self.buffer1:
+                            source = "buffer1"
+                            if source_buffer == self.buffer2:
+                                target = "buffer2"
+                            else:
+                                target = "buffer3"
+                            self.signals.data_flow.emit(data, source, target)
                         self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
                 except Exception as e:
                     logger.error(f"消费者 {consumer_id} MOVE线程错误: {e}", exc_info=True)
@@ -163,7 +175,13 @@ class ProducerConsumerSystem:
             logger.info(get_log_msg)
             while self.running:
                 try:
-                    if consumer.get():
+                    data = consumer.get()
+                    if data:
+                        # 发送数据流动信号（消费）
+                        if source_buffer == self.buffer2:
+                            self.signals.data_flow.emit(data, "buffer2", "")
+                        else:
+                            self.signals.data_flow.emit(data, "buffer3", "")
                         self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
                 except Exception as e:
                     logger.error(f"消费者 {consumer_id} GET线程错误: {e}", exc_info=True)
