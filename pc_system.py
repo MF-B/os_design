@@ -112,6 +112,7 @@ class ProducerConsumerSystem:
         
         while self.running:
             try:
+                producer.set_put_freq(self.put_freq)
                 data = producer.put()
                 if data:
                     # 发送流动动画信号
@@ -139,6 +140,10 @@ class ProducerConsumerSystem:
             logger.info(move_log_msg)
             while self.running:
                 try:
+                    if consumer_id == 1:
+                        consumer.set_move_freq(self.c1_move_freq)
+                    elif consumer_id == 2:
+                        consumer.set_move_freq(self.c2_move_freq)
                     data = consumer.move(target_buffer)
                     if data:
                         # 根据消费者ID发送不同的流动动画
@@ -158,6 +163,10 @@ class ProducerConsumerSystem:
             logger.info(get_log_msg)
             while self.running:
                 try:
+                    if consumer_id == 1:
+                        consumer.set_get_freq(self.c1_get_freq)
+                    elif consumer_id == 2:
+                        consumer.set_get_freq(self.c2_get_freq)
                     data = consumer.get()
                     if data:
                         # 根据消费者ID发送不同的流动动画
