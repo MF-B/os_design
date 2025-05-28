@@ -58,7 +58,7 @@ def print_buffer_status(buffer1, buffer2, buffer3):
 def main():
     # 缓冲区大小设置
     size_buffer1 = 8
-    size_buffer2 = 4
+    size_buffer2 = 1
     size_buffer3 = 4
     
     # 频率设置
