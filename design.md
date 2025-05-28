@@ -28,3 +28,6 @@ class Consumer:
         move_freq=2,
     ):
 ```
+
+# 同步设计
+基于条件变量

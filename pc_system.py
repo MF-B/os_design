@@ -1,7 +1,11 @@
 import threading
 import time
+import logging
 from PyQt6.QtCore import QObject, pyqtSignal
 from buffer import Buffer, Producer, Consumer
+
+# 获取一个 logger 实例
+logger = logging.getLogger(__name__)
 
 class WorkerSignals(QObject):
     """定义信号类，用于线程和主UI通信"""
@@ -20,7 +24,7 @@ class ProducerConsumerSystem:
         self.buffer3 = Buffer(4, 3)
         
         # 设置默认频率
-        self.put_freq = 2
+        self.put_freq = 4
         self.c1_get_freq = 1
         self.c2_get_freq = 1
         self.c1_move_freq = 2
@@ -58,14 +62,16 @@ class ProducerConsumerSystem:
         p_thread.start()
         c1_thread.start()
         c2_thread.start()
-        
+
         # 启动状态更新线程
         status_thread = threading.Thread(target=self.update_status)
         status_thread.daemon = True
         status_thread.start()
         self.threads.append(status_thread)
-        
-        self.signals.log_message.emit("系统已启动")
+
+        log_msg = "系统已启动"
+        self.signals.log_message.emit(log_msg)
+        logger.info(log_msg)
     
     def stop_system(self):
         """停止系统"""
@@ -73,25 +79,27 @@ class ProducerConsumerSystem:
             return
         
         self.running = False
-        # 线程是守护线程，主线程结束后会自动结束
-        # 这里只需要更新系统状态
-        self.signals.log_message.emit("系统已停止")
+        log_msg = "系统已停止"
+        self.signals.log_message.emit(log_msg)
+        logger.info(log_msg)
     
     def producer_thread(self):
         """生产者线程函数"""
         thread_id = threading.current_thread().ident
-        self.signals.log_message.emit(f"生产者线程 {thread_id} 启动")
+        log_msg = f"生产者线程 {thread_id} 启动"
+        self.signals.log_message.emit(log_msg)
+        logger.info(log_msg)
         producer = Producer(self.buffer1, self.put_freq)
         
         while self.running:
-            result = producer.put()
-            if result:
-                self.signals.log_message.emit(f"放入字符 '{result}' 到缓冲区 '{self.buffer1}'")
+            producer.put()
     
     def consumer_thread(self, source_buffer, target_buffer, get_freq, move_freq, consumer_id):
         """消费者线程函数"""
         thread_id = threading.current_thread().ident
-        self.signals.log_message.emit(f"消费者线程 {consumer_id} {thread_id} 启动")
+        log_msg = f"消费者线程 {consumer_id} {thread_id} 启动"
+        self.signals.log_message.emit(log_msg)
+        logger.info(log_msg)
         
         # 创建一个消费者实例
         consumer = Consumer(source_buffer, get_freq, move_freq)
@@ -99,13 +107,17 @@ class ProducerConsumerSystem:
         # 创建两个子线程
         def move_thread():
             sub_thread_id = threading.current_thread().ident
-            self.signals.log_message.emit(f"消费者 {consumer_id} 的移动线程 {sub_thread_id} 启动")
+            move_log_msg = f"消费者 {consumer_id} 的MOVE线程 {sub_thread_id} 启动"
+            self.signals.log_message.emit(move_log_msg)
+            logger.info(move_log_msg)
             while self.running:
                 consumer.move(target_buffer)
         
         def get_thread():
             sub_thread_id = threading.current_thread().ident
-            self.signals.log_message.emit(f"消费者 {consumer_id} 的获取线程 {sub_thread_id} 启动")
+            get_log_msg = f"消费者 {consumer_id} 的GET线程 {sub_thread_id} 启动"
+            self.signals.log_message.emit(get_log_msg)
+            logger.info(get_log_msg)
             while self.running:
                 consumer.get()
         
@@ -129,12 +141,10 @@ class ProducerConsumerSystem:
     def update_status(self):
         """更新状态线程"""
         while self.running:
-            time.sleep(1)  # 每秒更新一次
-            # 获取所有锁，确保状态一致性
-            with self.buffer1.lock, self.buffer2.lock, self.buffer3.lock:
-                buffer1_str = str(self.buffer1)
-                buffer2_str = str(self.buffer2)
-                buffer3_str = str(self.buffer3)
+            time.sleep(0.1)  # 每100ms秒更新一次
+            buffer1_str = str(self.buffer1)
+            buffer2_str = str(self.buffer2)
+            buffer3_str = str(self.buffer3)
                 
             # 发送信号更新UI
             self.signals.buffer_update.emit(buffer1_str, buffer2_str, buffer3_str)
@@ -142,7 +152,9 @@ class ProducerConsumerSystem:
     def update_producer_freq(self, value):
         """更新生产者频率"""
         self.put_freq = value
-        self.signals.log_message.emit(f"生产者频率更新为: {value}")
+        log_msg = f"生产者频率更新为: {value}"
+        self.signals.log_message.emit(log_msg)
+        logger.info(log_msg)
     
     def update_consumer_freq(self, consumer_id, freq_type, value):
         """更新消费者频率
@@ -161,31 +173,27 @@ class ProducerConsumerSystem:
             else:
                 self.c2_move_freq = value
                 
-        self.signals.log_message.emit(f"消费者 {consumer_id} {freq_type}频率更新为: {value}")
+        log_msg = f"消费者 {consumer_id} {freq_type}频率更新为: {value}"
+        self.signals.log_message.emit(log_msg)
+        logger.info(log_msg)
     
     def resize_buffer(self, buffer_id, size):
         """调整缓冲区大小"""
+        def resize_and_copy(old_buffer, new_size, new_id):
+            new_buffer = Buffer(new_size, new_id)
+            with old_buffer.lock:
+                for item in list(old_buffer.data):
+                    if new_buffer.can_put():
+                        new_buffer.put(item)
+            return new_buffer
+
         if buffer_id == 1:
-            new_buffer = Buffer(size, 1)
-            with self.buffer1.lock:
-                # 复制旧缓冲区中的数据
-                for item in list(self.buffer1.data):
-                    if new_buffer.can_put():
-                        new_buffer.put(item)
-                self.buffer1 = new_buffer
+            self.buffer1 = resize_and_copy(self.buffer1, size, 1)
         elif buffer_id == 2:
-            new_buffer = Buffer(size, 2)
-            with self.buffer2.lock:
-                for item in list(self.buffer2.data):
-                    if new_buffer.can_put():
-                        new_buffer.put(item)
-                self.buffer2 = new_buffer
+            self.buffer2 = resize_and_copy(self.buffer2, size, 2)
         else:
-            new_buffer = Buffer(size, 3)
-            with self.buffer3.lock:
-                for item in list(self.buffer3.data):
-                    if new_buffer.can_put():
-                        new_buffer.put(item)
-                self.buffer3 = new_buffer
+            self.buffer3 = resize_and_copy(self.buffer3, size, 3)
                 
-        self.signals.log_message.emit(f"缓冲区 {buffer_id} 大小调整为: {size}")
+        log_msg = f"缓冲区 {buffer_id} 大小调整为: {size}"
+        self.signals.log_message.emit(log_msg)
+        logger.info(log_msg)

@@ -1,12 +1,21 @@
 import threading
 import os
 import time
+import logging
 from buffer import Buffer, Producer, Consumer
+
+# 配置日志记录
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s - %(threadName)s - %(levelname)s - %(message)s',
+                    handlers=[
+                        logging.FileHandler("system.log"),
+                        logging.StreamHandler()
+                    ])
 
 def producer_thread(buffer1, put_freq):
     """生产者线程函数"""
     thread_id = threading.current_thread().ident
-    print(f"生产者线程 {thread_id} 启动")
+    logging.info(f"生产者线程 {thread_id} 启动")
     producer = Producer(buffer1, put_freq)
     while True:
         producer.put()
@@ -14,7 +23,7 @@ def producer_thread(buffer1, put_freq):
 def consumer_thread(source_buffer, target_buffer, get_freq, move_freq, consumer_id):
     """消费者线程函数"""
     thread_id = threading.current_thread().ident
-    print(f"消费者线程 {consumer_id} {thread_id} 启动")
+    logging.info(f"消费者线程 {consumer_id} {thread_id} 启动")
     
     # 创建一个消费者实例
     consumer = Consumer(source_buffer, get_freq, move_freq)
@@ -22,19 +31,19 @@ def consumer_thread(source_buffer, target_buffer, get_freq, move_freq, consumer_
     # 创建两个子线程
     def move_thread():
         sub_thread_id = threading.current_thread().ident
-        print(f"消费者 {consumer_id} 的移动线程 {sub_thread_id} 启动")
+        logging.info(f"消费者 {consumer_id} 的移动线程 {sub_thread_id} 启动")
         while True:
             consumer.move(target_buffer)
     
     def get_thread():
         sub_thread_id = threading.current_thread().ident
-        print(f"消费者 {consumer_id} 的获取线程 {sub_thread_id} 启动")
+        logging.info(f"消费者 {consumer_id} 的获取线程 {sub_thread_id} 启动")
         while True:
             consumer.get()
     
     # 启动子线程
-    move_t = threading.Thread(target=move_thread)
-    get_t = threading.Thread(target=get_thread)
+    move_t = threading.Thread(target=move_thread, name=f"MoveThread-C{consumer_id}")
+    get_t = threading.Thread(target=get_thread, name=f"GetThread-C{consumer_id}")
     
     move_t.daemon = True
     get_t.daemon = True
@@ -49,11 +58,10 @@ def consumer_thread(source_buffer, target_buffer, get_freq, move_freq, consumer_
 def print_buffer_status(buffer1, buffer2, buffer3):
     """打印所有缓冲区状态"""
     # 获取所有锁，确保状态一致性
-    with buffer1.lock, buffer2.lock, buffer3.lock:
-        print("\n当前缓冲区状态:")
-        print(f"缓冲区1: {buffer1}")
-        print(f"缓冲区2: {buffer2}")
-        print(f"缓冲区3: {buffer3}\n")
+    logging.info("\n当前缓冲区状态:")
+    logging.info(f"缓冲区1: {buffer1}")
+    logging.info(f"缓冲区2: {buffer2}")
+    logging.info(f"缓冲区3: {buffer3}\n")
 
 def main():
     # 缓冲区大小设置
@@ -75,15 +83,15 @@ def main():
     
     # 创建线程
     p_thread = threading.Thread(target=producer_thread, 
-                              args=(buffer1, put_freq))
+                              args=(buffer1, put_freq), name="ProducerThread")
     
     c1_thread = threading.Thread(target=consumer_thread, 
                                args=(buffer2, buffer1, 
-                                     c1_get_freq, c1_move_freq, 1))
+                                     c1_get_freq, c1_move_freq, 1), name="ConsumerThread-1")
     
     c2_thread = threading.Thread(target=consumer_thread, 
                                args=(buffer3, buffer1,
-                                     c2_get_freq, c2_move_freq, 2))
+                                     c2_get_freq, c2_move_freq, 2), name="ConsumerThread-2")
     
     # 设置为守护线程，这样主线程退出时这些线程也会退出
     p_thread.daemon = True
@@ -91,7 +99,7 @@ def main():
     c2_thread.daemon = True
     
     # 启动线程
-    print("系统启动...")
+    logging.info("系统启动...")
     p_thread.start()
     c1_thread.start()
     c2_thread.start()
@@ -102,7 +110,7 @@ def main():
             time.sleep(3)  # 每3秒打印一次所有缓冲区的状态
             print_buffer_status(buffer1, buffer2, buffer3)
     except KeyboardInterrupt:
-        print("\n程序被用户中断")
+        logging.info("\n程序被用户中断")
 
 if __name__ == "__main__":
     main()
