@@ -13,6 +13,10 @@ all: run
 run:
 	$(PYTHON) $(MAIN_DIR)/main.py
 
+.PHONY: ui
+ui:
+	$(PYTHON) $(MAIN_DIR)/ui.py
+
 # 运行测试
 .PHONY: test
 test:
