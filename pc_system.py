@@ -93,15 +93,17 @@ class ProducerConsumerSystem:
         c1_thread.start()
         c2_thread.start()
 
-        # 启动状态更新线程
-        status_thread = threading.Thread(target=self.update_status)
-        status_thread.daemon = True
-        status_thread.start()
-        self.threads.append(status_thread)
+        # 移除状态更新线程的启动
+        # status_thread = threading.Thread(target=self.update_status)
+        # status_thread.daemon = True
+        # status_thread.start()
+        # self.threads.append(status_thread)
 
         log_msg = "系统已启动"
         self.signals.log_message.emit(log_msg)
         logger.info(log_msg)
+        # 初始状态更新
+        self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
     
     def stop_system(self):
         """停止系统"""
@@ -122,7 +124,13 @@ class ProducerConsumerSystem:
         producer = Producer(self.buffer1, self.put_freq)
         
         while self.running:
-            producer.put()
+            try:
+                if producer.put():
+                    self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
+            except Exception as e:
+                logger.error(f"生产者线程错误: {e}", exc_info=True)
+                # 根据需要决定是否因为错误停止线程或继续
+                time.sleep(1) # 避免快速失败循环
     
     def consumer_thread(self, source_buffer, target_buffer, get_freq, move_freq, consumer_id):
         """消费者线程函数"""
@@ -141,7 +149,12 @@ class ProducerConsumerSystem:
             self.signals.log_message.emit(move_log_msg)
             logger.info(move_log_msg)
             while self.running:
-                consumer.move(target_buffer)
+                try:
+                    if consumer.move(target_buffer):
+                        self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
+                except Exception as e:
+                    logger.error(f"消费者 {consumer_id} MOVE线程错误: {e}", exc_info=True)
+                    time.sleep(1) # 避免快速失败循环
         
         def get_thread():
             sub_thread_id = threading.current_thread().ident
@@ -149,7 +162,12 @@ class ProducerConsumerSystem:
             self.signals.log_message.emit(get_log_msg)
             logger.info(get_log_msg)
             while self.running:
-                consumer.get()
+                try:
+                    if consumer.get():
+                        self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
+                except Exception as e:
+                    logger.error(f"消费者 {consumer_id} GET线程错误: {e}", exc_info=True)
+                    time.sleep(1) # 避免快速失败循环
         
         # 启动子线程
         move_t = threading.Thread(target=move_thread)
@@ -166,18 +184,19 @@ class ProducerConsumerSystem:
         
         # 等待子线程完成
         while self.running:
-            time.sleep(0.1)
+            time.sleep(0.1) # 主消费者线程保持运行，子线程执行实际工作
     
-    def update_status(self):
-        """更新状态线程"""
-        while self.running:
-            time.sleep(0.1)  # 每100ms秒更新一次
-            buffer1_str = str(self.buffer1)
-            buffer2_str = str(self.buffer2)
-            buffer3_str = str(self.buffer3)
-                
-            # 发送信号更新UI
-            self.signals.buffer_update.emit(buffer1_str, buffer2_str, buffer3_str)
+    # 移除 update_status 方法，因为它不再被使用
+    # def update_status(self):
+    #     """更新状态线程"""
+    #     while self.running:
+    #         time.sleep(0.1)  # 每100ms秒更新一次
+    #         buffer1_str = str(self.buffer1)
+    #         buffer2_str = str(self.buffer2)
+    #         buffer3_str = str(self.buffer3)
+    #             
+    #         # 发送信号更新UI
+    #         self.signals.buffer_update.emit(buffer1_str, buffer2_str, buffer3_str)
     
     def update_producer_freq(self, value):
         """更新生产者频率"""
@@ -237,10 +256,12 @@ class ProducerConsumerSystem:
             log_msg = f"缓冲区 {buffer_id} 大小已成功调整为: {size}。"
             self.signals.log_message.emit(log_msg)
             logger.info(log_msg)
+            self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))
         else:
-            # 此情况主要用于 Buffer.resize 内部发现问题 (例如，无效大小),
-            # 尽管 pc_system 也已检查。
-            # Buffer.resize 方法本身会记录其警告。
+            # Buffer.resize 内部已记录警告，这里仅记录尝试信息
             log_msg = f"尝试调整缓冲区 {buffer_id} 大小为 {size}，但操作未完成 (详见缓冲区日志)。"
+            # 即使resize报告失败（例如，由于无效参数），也可能需要更新UI以反映当前状态
             self.signals.log_message.emit(log_msg)
             logger.warning(log_msg)
+            # 确保UI仍然更新，以防万一状态有任何变化或需要反映尝试
+            self.signals.buffer_update.emit(str(self.buffer1), str(self.buffer2), str(self.buffer3))

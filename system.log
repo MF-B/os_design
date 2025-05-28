@@ -229,3 +229,641 @@
 2025-05-28 14:49:12,845 - Thread-5 (move_thread) - INFO - Consumer moved '9' from Buffer 1 to Buffer 2
 2025-05-28 14:49:13,343 - Thread-6 (get_thread) - INFO - Consumer got 'd' from Buffer 2
 2025-05-28 14:49:13,343 - Thread-8 (get_thread) - INFO - Consumer got 'b' from Buffer 3
+2025-05-28 17:19:20,400 - MainThread - INFO - Buffer 1 initialized with size 8
+2025-05-28 17:19:20,400 - MainThread - INFO - Buffer 2 initialized with size 4
+2025-05-28 17:19:20,400 - MainThread - INFO - Buffer 3 initialized with size 4
+2025-05-28 17:19:22,047 - Thread-1 (producer_thread) - INFO - 生产者线程 139674560362176 启动
+2025-05-28 17:19:22,048 - Thread-2 (consumer_thread) - INFO - 消费者线程 1 139674014185152 启动
+2025-05-28 17:19:22,048 - Thread-3 (consumer_thread) - INFO - 消费者线程 2 139674005792448 启动
+2025-05-28 17:19:22,048 - Thread-1 (producer_thread) - INFO - Producer initialized for Buffer 1 with put_freq 4
+2025-05-28 17:19:22,048 - Thread-2 (consumer_thread) - INFO - Consumer initialized for Buffer 2 with get_freq 1, move_freq 2
+2025-05-28 17:19:22,048 - Thread-3 (consumer_thread) - INFO - Consumer initialized for Buffer 3 with get_freq 1, move_freq 2
+2025-05-28 17:19:22,049 - MainThread - INFO - 系统已启动
+2025-05-28 17:19:22,049 - Thread-5 (move_thread) - INFO - 消费者 1 的MOVE线程 139673989007040 启动
+2025-05-28 17:19:22,050 - Thread-6 (get_thread) - INFO - 消费者 1 的GET线程 139673980614336 启动
+2025-05-28 17:19:22,050 - Thread-7 (move_thread) - INFO - 消费者 2 的MOVE线程 139673972221632 启动
+2025-05-28 17:19:22,050 - Thread-8 (get_thread) - INFO - 消费者 2 的GET线程 139673963828928 启动
+2025-05-28 17:19:22,299 - Thread-1 (producer_thread) - INFO - Producer put '7' into Buffer 1
+2025-05-28 17:19:22,549 - Thread-1 (producer_thread) - INFO - Producer put 'q' into Buffer 1
+2025-05-28 17:19:22,551 - Thread-5 (move_thread) - INFO - Consumer moved '7' from Buffer 1 to Buffer 2
+2025-05-28 17:19:22,553 - Thread-7 (move_thread) - INFO - Consumer moved 'q' from Buffer 1 to Buffer 3
+2025-05-28 17:19:22,800 - Thread-1 (producer_thread) - INFO - Producer put 'z' into Buffer 1
+2025-05-28 17:19:23,050 - Thread-1 (producer_thread) - INFO - Producer put 'M' into Buffer 1
+2025-05-28 17:19:23,051 - Thread-5 (move_thread) - INFO - Consumer moved 'z' from Buffer 1 to Buffer 2
+2025-05-28 17:19:23,053 - Thread-6 (get_thread) - INFO - Consumer got '7' from Buffer 2
+2025-05-28 17:19:23,053 - Thread-8 (get_thread) - INFO - Consumer got 'q' from Buffer 3
+2025-05-28 17:19:23,053 - Thread-7 (move_thread) - INFO - Consumer moved 'M' from Buffer 1 to Buffer 3
+2025-05-28 17:19:23,301 - Thread-1 (producer_thread) - INFO - Producer put 'y' into Buffer 1
+2025-05-28 17:19:23,551 - Thread-1 (producer_thread) - INFO - Producer put 'l' into Buffer 1
+2025-05-28 17:19:23,551 - Thread-5 (move_thread) - INFO - Consumer moved 'y' from Buffer 1 to Buffer 2
+2025-05-28 17:19:23,553 - Thread-7 (move_thread) - INFO - Consumer moved 'l' from Buffer 1 to Buffer 3
+2025-05-28 17:19:23,802 - Thread-1 (producer_thread) - INFO - Producer put 'a' into Buffer 1
+2025-05-28 17:19:24,052 - Thread-5 (move_thread) - INFO - Consumer moved 'a' from Buffer 1 to Buffer 2
+2025-05-28 17:19:24,052 - Thread-1 (producer_thread) - INFO - Producer put '8' into Buffer 1
+2025-05-28 17:19:24,053 - Thread-6 (get_thread) - INFO - Consumer got 'z' from Buffer 2
+2025-05-28 17:19:24,053 - Thread-8 (get_thread) - INFO - Consumer got 'M' from Buffer 3
+2025-05-28 17:19:24,053 - Thread-7 (move_thread) - INFO - Consumer moved '8' from Buffer 1 to Buffer 3
+2025-05-28 17:19:24,303 - Thread-1 (producer_thread) - INFO - Producer put 'f' into Buffer 1
+2025-05-28 17:19:24,553 - Thread-5 (move_thread) - INFO - Consumer moved 'f' from Buffer 1 to Buffer 2
+2025-05-28 17:19:24,553 - Thread-1 (producer_thread) - INFO - Producer put 'k' into Buffer 1
+2025-05-28 17:19:24,554 - Thread-7 (move_thread) - INFO - Consumer moved 'k' from Buffer 1 to Buffer 3
+2025-05-28 17:19:24,804 - Thread-1 (producer_thread) - INFO - Producer put 'p' into Buffer 1
+2025-05-28 17:19:25,053 - Thread-6 (get_thread) - INFO - Consumer got 'y' from Buffer 2
+2025-05-28 17:19:25,053 - Thread-5 (move_thread) - INFO - Consumer moved 'p' from Buffer 1 to Buffer 2
+2025-05-28 17:19:25,053 - Thread-8 (get_thread) - INFO - Consumer got 'l' from Buffer 3
+2025-05-28 17:19:25,054 - Thread-1 (producer_thread) - INFO - Producer put 'J' into Buffer 1
+2025-05-28 17:19:25,055 - Thread-7 (move_thread) - INFO - Consumer moved 'J' from Buffer 1 to Buffer 3
+2025-05-28 17:19:25,305 - Thread-1 (producer_thread) - INFO - Producer put 'z' into Buffer 1
+2025-05-28 17:19:25,555 - Thread-5 (move_thread) - INFO - Consumer moved 'z' from Buffer 1 to Buffer 2
+2025-05-28 17:19:25,555 - Thread-1 (producer_thread) - INFO - Producer put 'A' into Buffer 1
+2025-05-28 17:19:25,555 - Thread-7 (move_thread) - INFO - Consumer moved 'A' from Buffer 1 to Buffer 3
+2025-05-28 17:19:25,806 - Thread-1 (producer_thread) - INFO - Producer put 'k' into Buffer 1
+2025-05-28 17:19:26,054 - Thread-6 (get_thread) - INFO - Consumer got 'a' from Buffer 2
+2025-05-28 17:19:26,055 - Thread-8 (get_thread) - INFO - Consumer got '8' from Buffer 3
+2025-05-28 17:19:26,055 - Thread-5 (move_thread) - INFO - Consumer moved 'k' from Buffer 1 to Buffer 2
+2025-05-28 17:19:26,056 - Thread-1 (producer_thread) - INFO - Producer put 'W' into Buffer 1
+2025-05-28 17:19:26,056 - Thread-7 (move_thread) - INFO - Consumer moved 'W' from Buffer 1 to Buffer 3
+2025-05-28 17:19:26,307 - Thread-1 (producer_thread) - INFO - Producer put '0' into Buffer 1
+2025-05-28 17:19:26,557 - Thread-1 (producer_thread) - INFO - Producer put '6' into Buffer 1
+2025-05-28 17:19:26,807 - Thread-1 (producer_thread) - INFO - Producer put '5' into Buffer 1
+2025-05-28 17:19:27,055 - Thread-6 (get_thread) - INFO - Consumer got 'f' from Buffer 2
+2025-05-28 17:19:27,055 - Thread-5 (move_thread) - INFO - Consumer moved '0' from Buffer 1 to Buffer 2
+2025-05-28 17:19:27,056 - Thread-8 (get_thread) - INFO - Consumer got 'k' from Buffer 3
+2025-05-28 17:19:27,056 - Thread-7 (move_thread) - INFO - Consumer moved '6' from Buffer 1 to Buffer 3
+2025-05-28 17:19:27,058 - Thread-1 (producer_thread) - INFO - Producer put 'T' into Buffer 1
+2025-05-28 17:19:27,308 - Thread-1 (producer_thread) - INFO - Producer put 'L' into Buffer 1
+2025-05-28 17:19:27,558 - Thread-1 (producer_thread) - INFO - Producer put 'e' into Buffer 1
+2025-05-28 17:19:27,809 - Thread-1 (producer_thread) - INFO - Producer put '6' into Buffer 1
+2025-05-28 17:19:28,055 - Thread-6 (get_thread) - INFO - Consumer got 'p' from Buffer 2
+2025-05-28 17:19:28,056 - Thread-5 (move_thread) - INFO - Consumer moved '5' from Buffer 1 to Buffer 2
+2025-05-28 17:19:28,056 - Thread-8 (get_thread) - INFO - Consumer got 'J' from Buffer 3
+2025-05-28 17:19:28,056 - Thread-7 (move_thread) - INFO - Consumer moved 'T' from Buffer 1 to Buffer 3
+2025-05-28 17:19:28,059 - Thread-1 (producer_thread) - INFO - Producer put 'i' into Buffer 1
+2025-05-28 17:19:28,309 - Thread-1 (producer_thread) - INFO - Producer put 'd' into Buffer 1
+2025-05-28 17:19:28,559 - Thread-1 (producer_thread) - INFO - Producer put 'k' into Buffer 1
+2025-05-28 17:19:28,810 - Thread-1 (producer_thread) - INFO - Producer put 'C' into Buffer 1
+2025-05-28 17:19:29,056 - Thread-6 (get_thread) - INFO - Consumer got 'z' from Buffer 2
+2025-05-28 17:19:29,056 - Thread-5 (move_thread) - INFO - Consumer moved 'L' from Buffer 1 to Buffer 2
+2025-05-28 17:19:29,057 - Thread-8 (get_thread) - INFO - Consumer got 'A' from Buffer 3
+2025-05-28 17:19:29,057 - Thread-7 (move_thread) - INFO - Consumer moved 'e' from Buffer 1 to Buffer 3
+2025-05-28 17:19:29,061 - Thread-1 (producer_thread) - INFO - Producer put 'D' into Buffer 1
+2025-05-28 17:19:29,311 - Thread-1 (producer_thread) - INFO - Producer put 'V' into Buffer 1
+2025-05-28 17:19:29,561 - Thread-1 (producer_thread) - INFO - Producer put 'Z' into Buffer 1
+2025-05-28 17:19:29,812 - Thread-1 (producer_thread) - INFO - Producer put 'S' into Buffer 1
+2025-05-28 17:19:30,056 - Thread-6 (get_thread) - INFO - Consumer got 'k' from Buffer 2
+2025-05-28 17:19:30,057 - Thread-5 (move_thread) - INFO - Consumer moved '6' from Buffer 1 to Buffer 2
+2025-05-28 17:19:30,057 - Thread-8 (get_thread) - INFO - Consumer got 'W' from Buffer 3
+2025-05-28 17:19:30,057 - Thread-7 (move_thread) - INFO - Consumer moved 'i' from Buffer 1 to Buffer 3
+2025-05-28 17:19:30,062 - Thread-1 (producer_thread) - INFO - Producer put 'l' into Buffer 1
+2025-05-28 17:19:30,406 - MainThread - INFO - 系统已停止
+2025-05-28 17:19:30,557 - Thread-1 (producer_thread) - INFO - Producer put 'Z' into Buffer 1
+2025-05-28 17:19:31,057 - Thread-6 (get_thread) - INFO - Consumer got '0' from Buffer 2
+2025-05-28 17:19:31,057 - Thread-5 (move_thread) - INFO - Consumer moved 'd' from Buffer 1 to Buffer 2
+2025-05-28 17:19:31,058 - Thread-8 (get_thread) - INFO - Consumer got '6' from Buffer 3
+2025-05-28 17:19:31,058 - Thread-7 (move_thread) - INFO - Consumer moved 'k' from Buffer 1 to Buffer 3
+2025-05-28 17:25:05,097 - MainThread - INFO - Buffer 1 initialized with size 8
+2025-05-28 17:25:05,097 - MainThread - INFO - Buffer 2 initialized with size 4
+2025-05-28 17:25:05,097 - MainThread - INFO - Buffer 3 initialized with size 4
+2025-05-28 17:25:06,143 - Thread-1 (producer_thread) - INFO - 生产者线程 140427671873216 启动
+2025-05-28 17:25:06,143 - Thread-2 (consumer_thread) - INFO - 消费者线程 1 140427663480512 启动
+2025-05-28 17:25:06,144 - Thread-1 (producer_thread) - INFO - Producer initialized for Buffer 1 with put_freq 4
+2025-05-28 17:25:06,144 - Thread-3 (consumer_thread) - INFO - 消费者线程 2 140427109856960 启动
+2025-05-28 17:25:06,145 - Thread-2 (consumer_thread) - INFO - Consumer initialized for Buffer 2 with get_freq 1, move_freq 2
+2025-05-28 17:25:06,145 - MainThread - INFO - 系统已启动
+2025-05-28 17:25:06,146 - Thread-3 (consumer_thread) - INFO - Consumer initialized for Buffer 3 with get_freq 1, move_freq 2
+2025-05-28 17:25:06,146 - Thread-5 (move_thread) - INFO - 消费者 1 的MOVE线程 140427093071552 启动
+2025-05-28 17:25:06,146 - Thread-6 (get_thread) - INFO - 消费者 1 的GET线程 140427084678848 启动
+2025-05-28 17:25:06,148 - Thread-7 (move_thread) - INFO - 消费者 2 的MOVE线程 140427076286144 启动
+2025-05-28 17:25:06,148 - Thread-8 (get_thread) - INFO - 消费者 2 的GET线程 140427067893440 启动
+2025-05-28 17:25:06,396 - Thread-1 (producer_thread) - INFO - Producer put 'H' into Buffer 1
+2025-05-28 17:25:06,646 - Thread-1 (producer_thread) - INFO - Producer put 'U' into Buffer 1
+2025-05-28 17:25:06,648 - Thread-5 (move_thread) - INFO - Consumer moved 'H' from Buffer 1 to Buffer 2
+2025-05-28 17:25:06,649 - Thread-7 (move_thread) - INFO - Consumer moved 'U' from Buffer 1 to Buffer 3
+2025-05-28 17:25:06,896 - Thread-1 (producer_thread) - INFO - Producer put 's' into Buffer 1
+2025-05-28 17:25:07,147 - Thread-1 (producer_thread) - INFO - Producer put 'P' into Buffer 1
+2025-05-28 17:25:07,148 - Thread-6 (get_thread) - INFO - Consumer got 'H' from Buffer 2
+2025-05-28 17:25:07,148 - Thread-5 (move_thread) - INFO - Consumer moved 's' from Buffer 1 to Buffer 2
+2025-05-28 17:25:07,149 - Thread-8 (get_thread) - INFO - Consumer got 'U' from Buffer 3
+2025-05-28 17:25:07,149 - Thread-7 (move_thread) - INFO - Consumer moved 'P' from Buffer 1 to Buffer 3
+2025-05-28 17:25:07,397 - Thread-1 (producer_thread) - INFO - Producer put 'E' into Buffer 1
+2025-05-28 17:25:07,648 - Thread-1 (producer_thread) - INFO - Producer put 'd' into Buffer 1
+2025-05-28 17:25:07,649 - Thread-5 (move_thread) - INFO - Consumer moved 'E' from Buffer 1 to Buffer 2
+2025-05-28 17:25:07,649 - Thread-7 (move_thread) - INFO - Consumer moved 'd' from Buffer 1 to Buffer 3
+2025-05-28 17:25:07,898 - Thread-1 (producer_thread) - INFO - Producer put 'A' into Buffer 1
+2025-05-28 17:25:08,148 - Thread-1 (producer_thread) - INFO - Producer put 'z' into Buffer 1
+2025-05-28 17:25:08,149 - Thread-6 (get_thread) - INFO - Consumer got 's' from Buffer 2
+2025-05-28 17:25:08,149 - Thread-8 (get_thread) - INFO - Consumer got 'P' from Buffer 3
+2025-05-28 17:25:08,149 - Thread-5 (move_thread) - INFO - Consumer moved 'A' from Buffer 1 to Buffer 2
+2025-05-28 17:25:08,150 - Thread-7 (move_thread) - INFO - Consumer moved 'z' from Buffer 1 to Buffer 3
+2025-05-28 17:25:08,399 - Thread-1 (producer_thread) - INFO - Producer put 'g' into Buffer 1
+2025-05-28 17:25:08,649 - Thread-1 (producer_thread) - INFO - Producer put 'W' into Buffer 1
+2025-05-28 17:25:08,650 - Thread-5 (move_thread) - INFO - Consumer moved 'g' from Buffer 1 to Buffer 2
+2025-05-28 17:25:08,650 - Thread-7 (move_thread) - INFO - Consumer moved 'W' from Buffer 1 to Buffer 3
+2025-05-28 17:25:08,900 - Thread-1 (producer_thread) - INFO - Producer put 'A' into Buffer 1
+2025-05-28 17:25:09,149 - Thread-6 (get_thread) - INFO - Consumer got 'E' from Buffer 2
+2025-05-28 17:25:09,150 - Thread-8 (get_thread) - INFO - Consumer got 'd' from Buffer 3
+2025-05-28 17:25:09,150 - Thread-1 (producer_thread) - INFO - Producer put 'C' into Buffer 1
+2025-05-28 17:25:09,150 - Thread-5 (move_thread) - INFO - Consumer moved 'A' from Buffer 1 to Buffer 2
+2025-05-28 17:25:09,150 - Thread-7 (move_thread) - INFO - Consumer moved 'C' from Buffer 1 to Buffer 3
+2025-05-28 17:25:09,400 - Thread-1 (producer_thread) - INFO - Producer put 'u' into Buffer 1
+2025-05-28 17:25:09,650 - Thread-5 (move_thread) - INFO - Consumer moved 'u' from Buffer 1 to Buffer 2
+2025-05-28 17:25:09,651 - Thread-1 (producer_thread) - INFO - Producer put 'q' into Buffer 1
+2025-05-28 17:25:09,651 - Thread-7 (move_thread) - INFO - Consumer moved 'q' from Buffer 1 to Buffer 3
+2025-05-28 17:25:09,901 - Thread-1 (producer_thread) - INFO - Producer put 'x' into Buffer 1
+2025-05-28 17:25:10,150 - Thread-6 (get_thread) - INFO - Consumer got 'A' from Buffer 2
+2025-05-28 17:25:10,150 - Thread-8 (get_thread) - INFO - Consumer got 'z' from Buffer 3
+2025-05-28 17:25:10,151 - Thread-5 (move_thread) - INFO - Consumer moved 'x' from Buffer 1 to Buffer 2
+2025-05-28 17:25:10,152 - Thread-1 (producer_thread) - INFO - Producer put 'N' into Buffer 1
+2025-05-28 17:25:10,152 - Thread-7 (move_thread) - INFO - Consumer moved 'N' from Buffer 1 to Buffer 3
+2025-05-28 17:25:10,402 - Thread-1 (producer_thread) - INFO - Producer put 'X' into Buffer 1
+2025-05-28 17:25:10,653 - Thread-1 (producer_thread) - INFO - Producer put 'L' into Buffer 1
+2025-05-28 17:25:10,903 - Thread-1 (producer_thread) - INFO - Producer put 'Y' into Buffer 1
+2025-05-28 17:25:11,150 - Thread-6 (get_thread) - INFO - Consumer got 'g' from Buffer 2
+2025-05-28 17:25:11,150 - Thread-5 (move_thread) - INFO - Consumer moved 'X' from Buffer 1 to Buffer 2
+2025-05-28 17:25:11,151 - Thread-8 (get_thread) - INFO - Consumer got 'W' from Buffer 3
+2025-05-28 17:25:11,151 - Thread-7 (move_thread) - INFO - Consumer moved 'L' from Buffer 1 to Buffer 3
+2025-05-28 17:25:11,154 - Thread-1 (producer_thread) - INFO - Producer put '1' into Buffer 1
+2025-05-28 17:25:11,404 - Thread-1 (producer_thread) - INFO - Producer put 'V' into Buffer 1
+2025-05-28 17:25:11,654 - Thread-1 (producer_thread) - INFO - Producer put 'K' into Buffer 1
+2025-05-28 17:25:11,905 - Thread-1 (producer_thread) - INFO - Producer put 'z' into Buffer 1
+2025-05-28 17:25:12,150 - Thread-6 (get_thread) - INFO - Consumer got 'A' from Buffer 2
+2025-05-28 17:25:12,151 - Thread-5 (move_thread) - INFO - Consumer moved 'Y' from Buffer 1 to Buffer 2
+2025-05-28 17:25:12,151 - Thread-8 (get_thread) - INFO - Consumer got 'C' from Buffer 3
+2025-05-28 17:25:12,151 - Thread-7 (move_thread) - INFO - Consumer moved '1' from Buffer 1 to Buffer 3
+2025-05-28 17:25:12,155 - Thread-1 (producer_thread) - INFO - Producer put 'F' into Buffer 1
+2025-05-28 17:25:12,406 - Thread-1 (producer_thread) - INFO - Producer put 'X' into Buffer 1
+2025-05-28 17:25:12,656 - Thread-1 (producer_thread) - INFO - Producer put 'a' into Buffer 1
+2025-05-28 17:25:12,907 - Thread-1 (producer_thread) - INFO - Producer put 'k' into Buffer 1
+2025-05-28 17:25:13,151 - Thread-6 (get_thread) - INFO - Consumer got 'u' from Buffer 2
+2025-05-28 17:25:13,151 - Thread-5 (move_thread) - INFO - Consumer moved 'V' from Buffer 1 to Buffer 2
+2025-05-28 17:25:13,156 - Thread-8 (get_thread) - INFO - Consumer got 'q' from Buffer 3
+2025-05-28 17:25:13,156 - Thread-7 (move_thread) - INFO - Consumer moved 'K' from Buffer 1 to Buffer 3
+2025-05-28 17:25:13,157 - Thread-1 (producer_thread) - INFO - Producer put 'S' into Buffer 1
+2025-05-28 17:25:13,408 - Thread-1 (producer_thread) - INFO - Producer put 'F' into Buffer 1
+2025-05-28 17:25:13,658 - Thread-1 (producer_thread) - INFO - Producer put 'i' into Buffer 1
+2025-05-28 17:25:13,908 - Thread-1 (producer_thread) - INFO - Producer put 'S' into Buffer 1
+2025-05-28 17:25:14,151 - Thread-6 (get_thread) - INFO - Consumer got 'x' from Buffer 2
+2025-05-28 17:25:14,152 - Thread-5 (move_thread) - INFO - Consumer moved 'z' from Buffer 1 to Buffer 2
+2025-05-28 17:25:14,156 - Thread-8 (get_thread) - INFO - Consumer got 'N' from Buffer 3
+2025-05-28 17:25:14,156 - Thread-7 (move_thread) - INFO - Consumer moved 'F' from Buffer 1 to Buffer 3
+2025-05-28 17:25:14,159 - Thread-1 (producer_thread) - INFO - Producer put 'I' into Buffer 1
+2025-05-28 17:25:14,652 - Thread-1 (producer_thread) - INFO - Producer put 'b' into Buffer 1
+2025-05-28 17:25:14,902 - Thread-1 (producer_thread) - INFO - Producer put 'C' into Buffer 1
+2025-05-28 17:25:15,152 - Thread-6 (get_thread) - INFO - Consumer got 'X' from Buffer 2
+2025-05-28 17:25:15,152 - Thread-5 (move_thread) - INFO - Consumer moved 'X' from Buffer 1 to Buffer 2
+2025-05-28 17:25:15,157 - Thread-8 (get_thread) - INFO - Consumer got 'L' from Buffer 3
+2025-05-28 17:25:15,157 - Thread-7 (move_thread) - INFO - Consumer moved 'a' from Buffer 1 to Buffer 3
+2025-05-28 17:25:15,653 - Thread-1 (producer_thread) - INFO - Producer put 'w' into Buffer 1
+2025-05-28 17:25:15,903 - Thread-1 (producer_thread) - INFO - Producer put '2' into Buffer 1
+2025-05-28 17:25:16,152 - Thread-6 (get_thread) - INFO - Consumer got 'Y' from Buffer 2
+2025-05-28 17:25:16,153 - Thread-5 (move_thread) - INFO - Consumer moved 'k' from Buffer 1 to Buffer 2
+2025-05-28 17:25:16,157 - Thread-8 (get_thread) - INFO - Consumer got '1' from Buffer 3
+2025-05-28 17:25:16,157 - Thread-7 (move_thread) - INFO - Consumer moved 'S' from Buffer 1 to Buffer 3
+2025-05-28 17:25:16,648 - MainThread - INFO - 生产者频率更新为: 3
+2025-05-28 17:25:16,653 - Thread-1 (producer_thread) - INFO - Producer put 'l' into Buffer 1
+2025-05-28 17:25:16,904 - Thread-1 (producer_thread) - INFO - Producer put '3' into Buffer 1
+2025-05-28 17:25:17,153 - Thread-6 (get_thread) - INFO - Consumer got 'V' from Buffer 2
+2025-05-28 17:25:17,153 - Thread-5 (move_thread) - INFO - Consumer moved 'F' from Buffer 1 to Buffer 2
+2025-05-28 17:25:17,157 - Thread-8 (get_thread) - INFO - Consumer got 'K' from Buffer 3
+2025-05-28 17:25:17,158 - Thread-7 (move_thread) - INFO - Consumer moved 'i' from Buffer 1 to Buffer 3
+2025-05-28 17:25:17,654 - Thread-1 (producer_thread) - INFO - Producer put 'A' into Buffer 1
+2025-05-28 17:25:17,904 - Thread-1 (producer_thread) - INFO - Producer put 'j' into Buffer 1
+2025-05-28 17:25:18,153 - Thread-6 (get_thread) - INFO - Consumer got 'z' from Buffer 2
+2025-05-28 17:25:18,154 - Thread-5 (move_thread) - INFO - Consumer moved 'S' from Buffer 1 to Buffer 2
+2025-05-28 17:25:18,158 - Thread-8 (get_thread) - INFO - Consumer got 'F' from Buffer 3
+2025-05-28 17:25:18,158 - Thread-7 (move_thread) - INFO - Consumer moved 'I' from Buffer 1 to Buffer 3
+2025-05-28 17:25:18,654 - Thread-1 (producer_thread) - INFO - Producer put 'X' into Buffer 1
+2025-05-28 17:25:18,905 - Thread-1 (producer_thread) - INFO - Producer put 'W' into Buffer 1
+2025-05-28 17:25:19,154 - Thread-6 (get_thread) - INFO - Consumer got 'X' from Buffer 2
+2025-05-28 17:25:19,154 - Thread-5 (move_thread) - INFO - Consumer moved 'b' from Buffer 1 to Buffer 2
+2025-05-28 17:25:19,159 - Thread-8 (get_thread) - INFO - Consumer got 'a' from Buffer 3
+2025-05-28 17:25:19,159 - Thread-7 (move_thread) - INFO - Consumer moved 'C' from Buffer 1 to Buffer 3
+2025-05-28 17:25:19,655 - Thread-1 (producer_thread) - INFO - Producer put 'z' into Buffer 1
+2025-05-28 17:25:19,708 - MainThread - INFO - 生产者频率更新为: 2
+2025-05-28 17:25:19,905 - Thread-1 (producer_thread) - INFO - Producer put '9' into Buffer 1
+2025-05-28 17:25:20,155 - Thread-6 (get_thread) - INFO - Consumer got 'k' from Buffer 2
+2025-05-28 17:25:20,155 - Thread-5 (move_thread) - INFO - Consumer moved 'w' from Buffer 1 to Buffer 2
+2025-05-28 17:25:20,159 - Thread-8 (get_thread) - INFO - Consumer got 'S' from Buffer 3
+2025-05-28 17:25:20,159 - Thread-7 (move_thread) - INFO - Consumer moved '2' from Buffer 1 to Buffer 3
+2025-05-28 17:25:20,656 - Thread-1 (producer_thread) - INFO - Producer put 'r' into Buffer 1
+2025-05-28 17:25:20,788 - MainThread - INFO - 消费者 1 get频率更新为: 2
+2025-05-28 17:25:20,906 - Thread-1 (producer_thread) - INFO - Producer put 'u' into Buffer 1
+2025-05-28 17:25:21,155 - Thread-6 (get_thread) - INFO - Consumer got 'F' from Buffer 2
+2025-05-28 17:25:21,155 - Thread-5 (move_thread) - INFO - Consumer moved 'l' from Buffer 1 to Buffer 2
+2025-05-28 17:25:21,160 - Thread-8 (get_thread) - INFO - Consumer got 'i' from Buffer 3
+2025-05-28 17:25:21,160 - Thread-7 (move_thread) - INFO - Consumer moved '3' from Buffer 1 to Buffer 3
+2025-05-28 17:25:21,656 - Thread-1 (producer_thread) - INFO - Producer put 'Y' into Buffer 1
+2025-05-28 17:25:21,743 - MainThread - INFO - 消费者 2 get频率更新为: 2
+2025-05-28 17:25:21,906 - Thread-1 (producer_thread) - INFO - Producer put 'R' into Buffer 1
+2025-05-28 17:25:22,156 - Thread-6 (get_thread) - INFO - Consumer got 'S' from Buffer 2
+2025-05-28 17:25:22,156 - Thread-5 (move_thread) - INFO - Consumer moved 'A' from Buffer 1 to Buffer 2
+2025-05-28 17:25:22,160 - Thread-8 (get_thread) - INFO - Consumer got 'I' from Buffer 3
+2025-05-28 17:25:22,160 - Thread-7 (move_thread) - INFO - Consumer moved 'j' from Buffer 1 to Buffer 3
+2025-05-28 17:25:22,657 - Thread-1 (producer_thread) - INFO - Producer put '8' into Buffer 1
+2025-05-28 17:25:22,907 - Thread-1 (producer_thread) - INFO - Producer put 'M' into Buffer 1
+2025-05-28 17:25:23,156 - Thread-6 (get_thread) - INFO - Consumer got 'b' from Buffer 2
+2025-05-28 17:25:23,156 - Thread-5 (move_thread) - INFO - Consumer moved 'X' from Buffer 1 to Buffer 2
+2025-05-28 17:25:23,160 - Thread-8 (get_thread) - INFO - Consumer got 'C' from Buffer 3
+2025-05-28 17:25:23,160 - Thread-7 (move_thread) - INFO - Consumer moved 'W' from Buffer 1 to Buffer 3
+2025-05-28 17:25:23,657 - Thread-1 (producer_thread) - INFO - Producer put 'e' into Buffer 1
+2025-05-28 17:25:23,907 - Thread-1 (producer_thread) - INFO - Producer put '9' into Buffer 1
+2025-05-28 17:25:24,157 - Thread-6 (get_thread) - INFO - Consumer got 'w' from Buffer 2
+2025-05-28 17:25:24,157 - Thread-5 (move_thread) - INFO - Consumer moved 'z' from Buffer 1 to Buffer 2
+2025-05-28 17:25:24,161 - Thread-8 (get_thread) - INFO - Consumer got '2' from Buffer 3
+2025-05-28 17:25:24,161 - Thread-7 (move_thread) - INFO - Consumer moved '9' from Buffer 1 to Buffer 3
+2025-05-28 17:25:24,658 - Thread-1 (producer_thread) - INFO - Producer put 'L' into Buffer 1
+2025-05-28 17:25:24,908 - Thread-1 (producer_thread) - INFO - Producer put 'e' into Buffer 1
+2025-05-28 17:25:24,931 - MainThread - INFO - 系统已停止
+2025-05-28 17:25:25,158 - Thread-6 (get_thread) - INFO - Consumer got 'l' from Buffer 2
+2025-05-28 17:25:25,158 - Thread-5 (move_thread) - INFO - Consumer moved 'r' from Buffer 1 to Buffer 2
+2025-05-28 17:25:25,161 - Thread-8 (get_thread) - INFO - Consumer got '3' from Buffer 3
+2025-05-28 17:25:25,161 - Thread-7 (move_thread) - INFO - Consumer moved 'u' from Buffer 1 to Buffer 3
+2025-05-28 17:25:25,242 - Thread-9 (producer_thread) - INFO - 生产者线程 140427076286144 启动
+2025-05-28 17:25:25,242 - Thread-10 (consumer_thread) - INFO - 消费者线程 1 140427067893440 启动
+2025-05-28 17:25:25,242 - Thread-11 (consumer_thread) - INFO - 消费者线程 2 140427093071552 启动
+2025-05-28 17:25:25,242 - Thread-9 (producer_thread) - INFO - Producer initialized for Buffer 1 with put_freq 2
+2025-05-28 17:25:25,242 - MainThread - INFO - 系统已启动
+2025-05-28 17:25:25,243 - Thread-10 (consumer_thread) - INFO - Consumer initialized for Buffer 2 with get_freq 2, move_freq 2
+2025-05-28 17:25:25,243 - Thread-11 (consumer_thread) - INFO - Consumer initialized for Buffer 3 with get_freq 2, move_freq 2
+2025-05-28 17:25:25,244 - Thread-13 (move_thread) - INFO - 消费者 1 的MOVE线程 140427663480512 启动
+2025-05-28 17:25:25,244 - Thread-14 (get_thread) - INFO - 消费者 1 的GET线程 140427109856960 启动
+2025-05-28 17:25:25,244 - Thread-15 (move_thread) - INFO - 消费者 2 的MOVE线程 140427101464256 启动
+2025-05-28 17:25:25,245 - Thread-16 (get_thread) - INFO - 消费者 2 的GET线程 140427059500736 启动
+2025-05-28 17:25:25,745 - Thread-1 (producer_thread) - INFO - Producer put 'g' into Buffer 1
+2025-05-28 17:25:25,746 - Thread-14 (get_thread) - INFO - Consumer got 'A' from Buffer 2
+2025-05-28 17:25:25,746 - Thread-13 (move_thread) - INFO - Consumer moved 'Y' from Buffer 1 to Buffer 2
+2025-05-28 17:25:25,746 - Thread-16 (get_thread) - INFO - Consumer got 'j' from Buffer 3
+2025-05-28 17:25:25,746 - Thread-9 (producer_thread) - INFO - Producer put 'W' into Buffer 1
+2025-05-28 17:25:25,746 - Thread-15 (move_thread) - INFO - Consumer moved 'R' from Buffer 1 to Buffer 3
+2025-05-28 17:25:26,247 - Thread-14 (get_thread) - INFO - Consumer got 'X' from Buffer 2
+2025-05-28 17:25:26,247 - Thread-13 (move_thread) - INFO - Consumer moved '8' from Buffer 1 to Buffer 2
+2025-05-28 17:25:26,247 - Thread-9 (producer_thread) - INFO - Producer put '8' into Buffer 1
+2025-05-28 17:25:26,247 - Thread-16 (get_thread) - INFO - Consumer got 'W' from Buffer 3
+2025-05-28 17:25:26,247 - Thread-15 (move_thread) - INFO - Consumer moved 'M' from Buffer 1 to Buffer 3
+2025-05-28 17:25:26,248 - Thread-1 (producer_thread) - INFO - Producer put 'v' into Buffer 1
+2025-05-28 17:25:26,747 - Thread-14 (get_thread) - INFO - Consumer got 'z' from Buffer 2
+2025-05-28 17:25:26,748 - Thread-13 (move_thread) - INFO - Consumer moved 'e' from Buffer 1 to Buffer 2
+2025-05-28 17:25:26,748 - Thread-1 (producer_thread) - INFO - Producer put 'O' into Buffer 1
+2025-05-28 17:25:26,748 - Thread-16 (get_thread) - INFO - Consumer got '9' from Buffer 3
+2025-05-28 17:25:26,748 - Thread-15 (move_thread) - INFO - Consumer moved '9' from Buffer 1 to Buffer 3
+2025-05-28 17:25:26,748 - Thread-9 (producer_thread) - INFO - Producer put 'P' into Buffer 1
+2025-05-28 17:25:27,248 - Thread-14 (get_thread) - INFO - Consumer got 'r' from Buffer 2
+2025-05-28 17:25:27,248 - Thread-13 (move_thread) - INFO - Consumer moved 'L' from Buffer 1 to Buffer 2
+2025-05-28 17:25:27,248 - Thread-1 (producer_thread) - INFO - Producer put '9' into Buffer 1
+2025-05-28 17:25:27,249 - Thread-16 (get_thread) - INFO - Consumer got 'u' from Buffer 3
+2025-05-28 17:25:27,249 - Thread-15 (move_thread) - INFO - Consumer moved 'e' from Buffer 1 to Buffer 3
+2025-05-28 17:25:27,249 - Thread-9 (producer_thread) - INFO - Producer put 'F' into Buffer 1
+2025-05-28 17:25:27,748 - Thread-14 (get_thread) - INFO - Consumer got 'Y' from Buffer 2
+2025-05-28 17:25:27,753 - Thread-13 (move_thread) - INFO - Consumer moved 'g' from Buffer 1 to Buffer 2
+2025-05-28 17:25:27,753 - Thread-1 (producer_thread) - INFO - Producer put 'C' into Buffer 1
+2025-05-28 17:25:27,753 - Thread-16 (get_thread) - INFO - Consumer got 'R' from Buffer 3
+2025-05-28 17:25:27,753 - Thread-15 (move_thread) - INFO - Consumer moved 'W' from Buffer 1 to Buffer 3
+2025-05-28 17:25:27,754 - Thread-9 (producer_thread) - INFO - Producer put 'P' into Buffer 1
+2025-05-28 17:25:28,248 - Thread-14 (get_thread) - INFO - Consumer got '8' from Buffer 2
+2025-05-28 17:25:28,253 - Thread-13 (move_thread) - INFO - Consumer moved '8' from Buffer 1 to Buffer 2
+2025-05-28 17:25:28,253 - Thread-1 (producer_thread) - INFO - Producer put '8' into Buffer 1
+2025-05-28 17:25:28,254 - Thread-16 (get_thread) - INFO - Consumer got 'M' from Buffer 3
+2025-05-28 17:25:28,254 - Thread-9 (producer_thread) - INFO - Producer put 'c' into Buffer 1
+2025-05-28 17:25:28,254 - Thread-15 (move_thread) - INFO - Consumer moved 'v' from Buffer 1 to Buffer 3
+2025-05-28 17:25:28,749 - Thread-14 (get_thread) - INFO - Consumer got 'e' from Buffer 2
+2025-05-28 17:25:28,754 - Thread-13 (move_thread) - INFO - Consumer moved 'O' from Buffer 1 to Buffer 2
+2025-05-28 17:25:28,754 - Thread-1 (producer_thread) - INFO - Producer put '9' into Buffer 1
+2025-05-28 17:25:28,755 - Thread-16 (get_thread) - INFO - Consumer got '9' from Buffer 3
+2025-05-28 17:25:28,755 - Thread-15 (move_thread) - INFO - Consumer moved 'P' from Buffer 1 to Buffer 3
+2025-05-28 17:25:28,755 - Thread-9 (producer_thread) - INFO - Producer put '2' into Buffer 1
+2025-05-28 17:25:29,249 - Thread-14 (get_thread) - INFO - Consumer got 'L' from Buffer 2
+2025-05-28 17:25:29,254 - Thread-13 (move_thread) - INFO - Consumer moved '9' from Buffer 1 to Buffer 2
+2025-05-28 17:25:29,254 - Thread-1 (producer_thread) - INFO - Producer put 'k' into Buffer 1
+2025-05-28 17:25:29,255 - Thread-16 (get_thread) - INFO - Consumer got 'e' from Buffer 3
+2025-05-28 17:25:29,255 - Thread-15 (move_thread) - INFO - Consumer moved 'F' from Buffer 1 to Buffer 3
+2025-05-28 17:25:29,255 - Thread-9 (producer_thread) - INFO - Producer put 'X' into Buffer 1
+2025-05-28 17:25:29,432 - MainThread - INFO - 系统已停止
+2025-05-28 17:25:29,750 - Thread-14 (get_thread) - INFO - Consumer got 'g' from Buffer 2
+2025-05-28 17:25:29,755 - Thread-13 (move_thread) - INFO - Consumer moved 'C' from Buffer 1 to Buffer 2
+2025-05-28 17:25:29,755 - Thread-1 (producer_thread) - INFO - Producer put 'm' into Buffer 1
+2025-05-28 17:25:29,756 - Thread-16 (get_thread) - INFO - Consumer got 'W' from Buffer 3
+2025-05-28 17:25:29,756 - Thread-9 (producer_thread) - INFO - Producer put 'd' into Buffer 1
+2025-05-28 17:25:29,756 - Thread-15 (move_thread) - INFO - Consumer moved 'P' from Buffer 1 to Buffer 3
+2025-05-28 17:25:31,337 - Thread-17 (producer_thread) - INFO - 生产者线程 140427101464256 启动
+2025-05-28 17:25:31,338 - Thread-18 (consumer_thread) - INFO - 消费者线程 1 140427076286144 启动
+2025-05-28 17:25:31,338 - Thread-19 (consumer_thread) - INFO - 消费者线程 2 140427059500736 启动
+2025-05-28 17:25:31,338 - Thread-17 (producer_thread) - INFO - Producer initialized for Buffer 1 with put_freq 2
+2025-05-28 17:25:31,338 - MainThread - INFO - 系统已启动
+2025-05-28 17:25:31,338 - Thread-18 (consumer_thread) - INFO - Consumer initialized for Buffer 2 with get_freq 2, move_freq 2
+2025-05-28 17:25:31,339 - Thread-19 (consumer_thread) - INFO - Consumer initialized for Buffer 3 with get_freq 2, move_freq 2
+2025-05-28 17:25:31,340 - Thread-21 (move_thread) - INFO - 消费者 1 的MOVE线程 140427663480512 启动
+2025-05-28 17:25:31,341 - Thread-22 (get_thread) - INFO - 消费者 1 的GET线程 140427109856960 启动
+2025-05-28 17:25:31,341 - Thread-23 (move_thread) - INFO - 消费者 2 的MOVE线程 140427093071552 启动
+2025-05-28 17:25:31,341 - Thread-24 (get_thread) - INFO - 消费者 2 的GET线程 140427084678848 启动
+2025-05-28 17:25:31,843 - Thread-17 (producer_thread) - INFO - Producer put 'Q' into Buffer 1
+2025-05-28 17:25:31,843 - Thread-21 (move_thread) - INFO - Consumer moved '8' from Buffer 1 to Buffer 2
+2025-05-28 17:25:31,843 - Thread-22 (get_thread) - INFO - Consumer got '8' from Buffer 2
+2025-05-28 17:25:31,843 - Thread-24 (get_thread) - INFO - Consumer got 'v' from Buffer 3
+2025-05-28 17:25:31,844 - Thread-23 (move_thread) - INFO - Consumer moved 'c' from Buffer 1 to Buffer 3
+2025-05-28 17:25:32,344 - Thread-17 (producer_thread) - INFO - Producer put '9' into Buffer 1
+2025-05-28 17:25:32,344 - Thread-22 (get_thread) - INFO - Consumer got 'O' from Buffer 2
+2025-05-28 17:25:32,344 - Thread-21 (move_thread) - INFO - Consumer moved '9' from Buffer 1 to Buffer 2
+2025-05-28 17:25:32,344 - Thread-24 (get_thread) - INFO - Consumer got 'P' from Buffer 3
+2025-05-28 17:25:32,345 - Thread-23 (move_thread) - INFO - Consumer moved '2' from Buffer 1 to Buffer 3
+2025-05-28 17:25:32,844 - Thread-17 (producer_thread) - INFO - Producer put 'q' into Buffer 1
+2025-05-28 17:25:32,845 - Thread-22 (get_thread) - INFO - Consumer got '9' from Buffer 2
+2025-05-28 17:25:32,845 - Thread-21 (move_thread) - INFO - Consumer moved 'k' from Buffer 1 to Buffer 2
+2025-05-28 17:25:32,845 - Thread-24 (get_thread) - INFO - Consumer got 'F' from Buffer 3
+2025-05-28 17:25:32,845 - Thread-23 (move_thread) - INFO - Consumer moved 'X' from Buffer 1 to Buffer 3
+2025-05-28 17:25:33,344 - Thread-17 (producer_thread) - INFO - Producer put 'f' into Buffer 1
+2025-05-28 17:25:33,345 - Thread-22 (get_thread) - INFO - Consumer got 'C' from Buffer 2
+2025-05-28 17:25:33,345 - Thread-21 (move_thread) - INFO - Consumer moved 'm' from Buffer 1 to Buffer 2
+2025-05-28 17:25:33,345 - Thread-24 (get_thread) - INFO - Consumer got 'P' from Buffer 3
+2025-05-28 17:25:33,345 - Thread-23 (move_thread) - INFO - Consumer moved 'd' from Buffer 1 to Buffer 3
+2025-05-28 17:25:33,844 - Thread-17 (producer_thread) - INFO - Producer put 'x' into Buffer 1
+2025-05-28 17:25:33,845 - Thread-22 (get_thread) - INFO - Consumer got '8' from Buffer 2
+2025-05-28 17:25:33,845 - Thread-21 (move_thread) - INFO - Consumer moved 'Q' from Buffer 1 to Buffer 2
+2025-05-28 17:25:33,845 - Thread-24 (get_thread) - INFO - Consumer got 'c' from Buffer 3
+2025-05-28 17:25:33,846 - Thread-23 (move_thread) - INFO - Consumer moved '9' from Buffer 1 to Buffer 3
+2025-05-28 17:25:34,345 - Thread-17 (producer_thread) - INFO - Producer put 'y' into Buffer 1
+2025-05-28 17:25:34,345 - Thread-22 (get_thread) - INFO - Consumer got '9' from Buffer 2
+2025-05-28 17:25:34,345 - Thread-21 (move_thread) - INFO - Consumer moved 'q' from Buffer 1 to Buffer 2
+2025-05-28 17:25:34,346 - Thread-24 (get_thread) - INFO - Consumer got '2' from Buffer 3
+2025-05-28 17:25:34,346 - Thread-23 (move_thread) - INFO - Consumer moved 'f' from Buffer 1 to Buffer 3
+2025-05-28 17:25:34,845 - Thread-17 (producer_thread) - INFO - Producer put 'u' into Buffer 1
+2025-05-28 17:25:34,845 - Thread-22 (get_thread) - INFO - Consumer got 'k' from Buffer 2
+2025-05-28 17:25:34,846 - Thread-21 (move_thread) - INFO - Consumer moved 'x' from Buffer 1 to Buffer 2
+2025-05-28 17:25:34,846 - Thread-24 (get_thread) - INFO - Consumer got 'X' from Buffer 3
+2025-05-28 17:25:34,846 - Thread-23 (move_thread) - INFO - Consumer moved 'y' from Buffer 1 to Buffer 3
+2025-05-28 17:25:35,345 - Thread-17 (producer_thread) - INFO - Producer put 'L' into Buffer 1
+2025-05-28 17:25:35,346 - Thread-22 (get_thread) - INFO - Consumer got 'm' from Buffer 2
+2025-05-28 17:25:35,346 - Thread-21 (move_thread) - INFO - Consumer moved 'u' from Buffer 1 to Buffer 2
+2025-05-28 17:25:35,346 - Thread-24 (get_thread) - INFO - Consumer got 'd' from Buffer 3
+2025-05-28 17:25:35,346 - Thread-23 (move_thread) - INFO - Consumer moved 'L' from Buffer 1 to Buffer 3
+2025-05-28 17:25:35,846 - Thread-17 (producer_thread) - INFO - Producer put 'r' into Buffer 1
+2025-05-28 17:25:35,847 - Thread-22 (get_thread) - INFO - Consumer got 'Q' from Buffer 2
+2025-05-28 17:25:35,847 - Thread-24 (get_thread) - INFO - Consumer got '9' from Buffer 3
+2025-05-28 17:25:35,847 - Thread-21 (move_thread) - INFO - Consumer moved 'r' from Buffer 1 to Buffer 2
+2025-05-28 17:25:36,347 - Thread-17 (producer_thread) - INFO - Producer put '2' into Buffer 1
+2025-05-28 17:25:36,347 - Thread-23 (move_thread) - INFO - Consumer moved '2' from Buffer 1 to Buffer 3
+2025-05-28 17:25:36,347 - Thread-24 (get_thread) - INFO - Consumer got 'f' from Buffer 3
+2025-05-28 17:25:36,348 - Thread-22 (get_thread) - INFO - Consumer got 'q' from Buffer 2
+2025-05-28 17:25:36,848 - Thread-17 (producer_thread) - INFO - Producer put 'N' into Buffer 1
+2025-05-28 17:25:36,848 - Thread-21 (move_thread) - INFO - Consumer moved 'N' from Buffer 1 to Buffer 2
+2025-05-28 17:25:36,849 - Thread-22 (get_thread) - INFO - Consumer got 'x' from Buffer 2
+2025-05-28 17:25:36,849 - Thread-24 (get_thread) - INFO - Consumer got 'y' from Buffer 3
+2025-05-28 17:25:37,349 - Thread-17 (producer_thread) - INFO - Producer put 'a' into Buffer 1
+2025-05-28 17:25:37,349 - Thread-23 (move_thread) - INFO - Consumer moved 'a' from Buffer 1 to Buffer 3
+2025-05-28 17:25:37,350 - Thread-22 (get_thread) - INFO - Consumer got 'u' from Buffer 2
+2025-05-28 17:25:37,350 - Thread-24 (get_thread) - INFO - Consumer got 'L' from Buffer 3
+2025-05-28 17:25:37,849 - Thread-17 (producer_thread) - INFO - Producer put 'u' into Buffer 1
+2025-05-28 17:25:37,850 - Thread-23 (move_thread) - INFO - Consumer moved 'u' from Buffer 1 to Buffer 3
+2025-05-28 17:25:37,850 - Thread-22 (get_thread) - INFO - Consumer got 'r' from Buffer 2
+2025-05-28 17:25:37,850 - Thread-24 (get_thread) - INFO - Consumer got '2' from Buffer 3
+2025-05-28 17:25:38,350 - Thread-17 (producer_thread) - INFO - Producer put 'C' into Buffer 1
+2025-05-28 17:25:38,350 - Thread-23 (move_thread) - INFO - Consumer moved 'C' from Buffer 1 to Buffer 3
+2025-05-28 17:25:38,351 - Thread-24 (get_thread) - INFO - Consumer got 'a' from Buffer 3
+2025-05-28 17:25:38,351 - Thread-22 (get_thread) - INFO - Consumer got 'N' from Buffer 2
+2025-05-28 17:25:38,851 - Thread-17 (producer_thread) - INFO - Producer put 'A' into Buffer 1
+2025-05-28 17:25:38,851 - Thread-21 (move_thread) - INFO - Consumer moved 'A' from Buffer 1 to Buffer 2
+2025-05-28 17:25:38,851 - Thread-24 (get_thread) - INFO - Consumer got 'u' from Buffer 3
+2025-05-28 17:25:38,852 - Thread-22 (get_thread) - INFO - Consumer got 'A' from Buffer 2
+2025-05-28 17:25:39,352 - Thread-17 (producer_thread) - INFO - Producer put 'x' into Buffer 1
+2025-05-28 17:25:39,352 - Thread-23 (move_thread) - INFO - Consumer moved 'x' from Buffer 1 to Buffer 3
+2025-05-28 17:25:39,352 - Thread-24 (get_thread) - INFO - Consumer got 'C' from Buffer 3
+2025-05-28 17:25:39,852 - Thread-17 (producer_thread) - INFO - Producer put 'o' into Buffer 1
+2025-05-28 17:25:39,852 - Thread-21 (move_thread) - INFO - Consumer moved 'o' from Buffer 1 to Buffer 2
+2025-05-28 17:25:39,852 - Thread-22 (get_thread) - INFO - Consumer got 'o' from Buffer 2
+2025-05-28 17:25:39,853 - Thread-24 (get_thread) - INFO - Consumer got 'x' from Buffer 3
+2025-05-28 17:25:40,353 - Thread-17 (producer_thread) - INFO - Producer put 'L' into Buffer 1
+2025-05-28 17:25:40,353 - Thread-23 (move_thread) - INFO - Consumer moved 'L' from Buffer 1 to Buffer 3
+2025-05-28 17:25:40,354 - Thread-24 (get_thread) - INFO - Consumer got 'L' from Buffer 3
+2025-05-28 17:25:40,853 - Thread-17 (producer_thread) - INFO - Producer put 'F' into Buffer 1
+2025-05-28 17:25:40,853 - Thread-21 (move_thread) - INFO - Consumer moved 'F' from Buffer 1 to Buffer 2
+2025-05-28 17:25:40,854 - Thread-22 (get_thread) - INFO - Consumer got 'F' from Buffer 2
+2025-05-28 17:25:41,354 - Thread-17 (producer_thread) - INFO - Producer put '3' into Buffer 1
+2025-05-28 17:25:41,354 - Thread-23 (move_thread) - INFO - Consumer moved '3' from Buffer 1 to Buffer 3
+2025-05-28 17:25:41,354 - Thread-24 (get_thread) - INFO - Consumer got '3' from Buffer 3
+2025-05-28 17:25:41,855 - Thread-17 (producer_thread) - INFO - Producer put 'g' into Buffer 1
+2025-05-28 17:25:41,855 - Thread-21 (move_thread) - INFO - Consumer moved 'g' from Buffer 1 to Buffer 2
+2025-05-28 17:25:41,855 - Thread-22 (get_thread) - INFO - Consumer got 'g' from Buffer 2
+2025-05-28 17:25:41,929 - MainThread - INFO - 系统已停止
+2025-05-28 17:25:42,356 - Thread-17 (producer_thread) - INFO - Producer put 'a' into Buffer 1
+2025-05-28 17:25:42,356 - Thread-23 (move_thread) - INFO - Consumer moved 'a' from Buffer 1 to Buffer 3
+2025-05-28 17:25:42,356 - Thread-24 (get_thread) - INFO - Consumer got 'a' from Buffer 3
+2025-05-28 17:31:30,351 - MainThread - INFO - Buffer 1 initialized with size 8
+2025-05-28 17:31:30,352 - MainThread - INFO - Buffer 2 initialized with size 4
+2025-05-28 17:31:30,352 - MainThread - INFO - Buffer 3 initialized with size 4
+2025-05-28 17:31:31,523 - Thread-1 (producer_thread) - INFO - 生产者线程 139653168473792 启动
+2025-05-28 17:31:31,524 - Thread-2 (consumer_thread) - INFO - 消费者线程 1 139653160081088 启动
+2025-05-28 17:31:31,524 - Thread-3 (consumer_thread) - INFO - 消费者线程 2 139652606457536 启动
+2025-05-28 17:31:31,524 - Thread-1 (producer_thread) - INFO - Producer initialized for Buffer 1 with put_freq 4
+2025-05-28 17:31:31,525 - Thread-2 (consumer_thread) - INFO - Consumer initialized for Buffer 2 with get_freq 1, move_freq 2
+2025-05-28 17:31:31,525 - Thread-3 (consumer_thread) - INFO - Consumer initialized for Buffer 3 with get_freq 1, move_freq 2
+2025-05-28 17:31:31,526 - MainThread - INFO - 系统已启动
+2025-05-28 17:31:31,526 - Thread-5 (move_thread) - INFO - 消费者 1 的MOVE线程 139652589672128 启动
+2025-05-28 17:31:31,526 - Thread-6 (get_thread) - INFO - 消费者 1 的GET线程 139652581279424 启动
+2025-05-28 17:31:31,527 - Thread-7 (move_thread) - INFO - 消费者 2 的MOVE线程 139652572886720 启动
+2025-05-28 17:31:31,527 - Thread-8 (get_thread) - INFO - 消费者 2 的GET线程 139652564494016 启动
+2025-05-28 17:31:31,776 - Thread-1 (producer_thread) - INFO - Producer put 'v' into Buffer 1
+2025-05-28 17:31:32,026 - Thread-1 (producer_thread) - INFO - Producer put 'u' into Buffer 1
+2025-05-28 17:31:32,034 - Thread-5 (move_thread) - INFO - Consumer moved 'v' from Buffer 1 to Buffer 2
+2025-05-28 17:31:32,034 - Thread-7 (move_thread) - INFO - Consumer moved 'u' from Buffer 1 to Buffer 3
+2025-05-28 17:31:32,277 - Thread-1 (producer_thread) - INFO - Producer put 'K' into Buffer 1
+2025-05-28 17:31:32,527 - Thread-1 (producer_thread) - INFO - Producer put 'y' into Buffer 1
+2025-05-28 17:31:32,534 - Thread-6 (get_thread) - INFO - Consumer got 'v' from Buffer 2
+2025-05-28 17:31:32,534 - Thread-5 (move_thread) - INFO - Consumer moved 'K' from Buffer 1 to Buffer 2
+2025-05-28 17:31:32,534 - Thread-8 (get_thread) - INFO - Consumer got 'u' from Buffer 3
+2025-05-28 17:31:32,535 - Thread-7 (move_thread) - INFO - Consumer moved 'y' from Buffer 1 to Buffer 3
+2025-05-28 17:31:32,777 - Thread-1 (producer_thread) - INFO - Producer put 'H' into Buffer 1
+2025-05-28 17:31:33,028 - Thread-1 (producer_thread) - INFO - Producer put 'Q' into Buffer 1
+2025-05-28 17:31:33,035 - Thread-5 (move_thread) - INFO - Consumer moved 'H' from Buffer 1 to Buffer 2
+2025-05-28 17:31:33,036 - Thread-7 (move_thread) - INFO - Consumer moved 'Q' from Buffer 1 to Buffer 3
+2025-05-28 17:31:33,278 - Thread-1 (producer_thread) - INFO - Producer put 'Y' into Buffer 1
+2025-05-28 17:31:33,529 - Thread-1 (producer_thread) - INFO - Producer put 'u' into Buffer 1
+2025-05-28 17:31:33,535 - Thread-6 (get_thread) - INFO - Consumer got 'K' from Buffer 2
+2025-05-28 17:31:33,535 - Thread-8 (get_thread) - INFO - Consumer got 'y' from Buffer 3
+2025-05-28 17:31:33,535 - Thread-5 (move_thread) - INFO - Consumer moved 'Y' from Buffer 1 to Buffer 2
+2025-05-28 17:31:33,536 - Thread-7 (move_thread) - INFO - Consumer moved 'u' from Buffer 1 to Buffer 3
+2025-05-28 17:31:33,779 - Thread-1 (producer_thread) - INFO - Producer put 't' into Buffer 1
+2025-05-28 17:31:34,030 - Thread-1 (producer_thread) - INFO - Producer put 'S' into Buffer 1
+2025-05-28 17:31:34,036 - Thread-5 (move_thread) - INFO - Consumer moved 't' from Buffer 1 to Buffer 2
+2025-05-28 17:31:34,036 - Thread-7 (move_thread) - INFO - Consumer moved 'S' from Buffer 1 to Buffer 3
+2025-05-28 17:31:34,280 - Thread-1 (producer_thread) - INFO - Producer put 'V' into Buffer 1
+2025-05-28 17:31:34,530 - Thread-1 (producer_thread) - INFO - Producer put 'n' into Buffer 1
+2025-05-28 17:31:34,535 - Thread-6 (get_thread) - INFO - Consumer got 'H' from Buffer 2
+2025-05-28 17:31:34,536 - Thread-8 (get_thread) - INFO - Consumer got 'Q' from Buffer 3
+2025-05-28 17:31:34,536 - Thread-5 (move_thread) - INFO - Consumer moved 'V' from Buffer 1 to Buffer 2
+2025-05-28 17:31:34,536 - Thread-7 (move_thread) - INFO - Consumer moved 'n' from Buffer 1 to Buffer 3
+2025-05-28 17:31:34,781 - Thread-1 (producer_thread) - INFO - Producer put 'd' into Buffer 1
+2025-05-28 17:31:35,031 - Thread-1 (producer_thread) - INFO - Producer put 'R' into Buffer 1
+2025-05-28 17:31:35,036 - Thread-5 (move_thread) - INFO - Consumer moved 'd' from Buffer 1 to Buffer 2
+2025-05-28 17:31:35,037 - Thread-7 (move_thread) - INFO - Consumer moved 'R' from Buffer 1 to Buffer 3
+2025-05-28 17:31:35,282 - Thread-1 (producer_thread) - INFO - Producer put 'O' into Buffer 1
+2025-05-28 17:31:35,532 - Thread-1 (producer_thread) - INFO - Producer put 'V' into Buffer 1
+2025-05-28 17:31:35,535 - Thread-6 (get_thread) - INFO - Consumer got 'Y' from Buffer 2
+2025-05-28 17:31:35,536 - Thread-8 (get_thread) - INFO - Consumer got 'u' from Buffer 3
+2025-05-28 17:31:35,537 - Thread-5 (move_thread) - INFO - Consumer moved 'O' from Buffer 1 to Buffer 2
+2025-05-28 17:31:35,537 - Thread-7 (move_thread) - INFO - Consumer moved 'V' from Buffer 1 to Buffer 3
+2025-05-28 17:31:35,783 - Thread-1 (producer_thread) - INFO - Producer put 'e' into Buffer 1
+2025-05-28 17:31:36,033 - Thread-1 (producer_thread) - INFO - Producer put 'b' into Buffer 1
+2025-05-28 17:31:36,284 - Thread-1 (producer_thread) - INFO - Producer put 'X' into Buffer 1
+2025-05-28 17:31:36,534 - Thread-1 (producer_thread) - INFO - Producer put 'Z' into Buffer 1
+2025-05-28 17:31:36,536 - Thread-6 (get_thread) - INFO - Consumer got 't' from Buffer 2
+2025-05-28 17:31:36,536 - Thread-5 (move_thread) - INFO - Consumer moved 'e' from Buffer 1 to Buffer 2
+2025-05-28 17:31:36,536 - Thread-8 (get_thread) - INFO - Consumer got 'S' from Buffer 3
+2025-05-28 17:31:36,536 - Thread-7 (move_thread) - INFO - Consumer moved 'b' from Buffer 1 to Buffer 3
+2025-05-28 17:31:36,785 - Thread-1 (producer_thread) - INFO - Producer put 'h' into Buffer 1
+2025-05-28 17:31:37,035 - Thread-1 (producer_thread) - INFO - Producer put 'L' into Buffer 1
+2025-05-28 17:31:37,286 - Thread-1 (producer_thread) - INFO - Producer put '6' into Buffer 1
+2025-05-28 17:31:37,536 - Thread-6 (get_thread) - INFO - Consumer got 'V' from Buffer 2
+2025-05-28 17:31:37,536 - Thread-1 (producer_thread) - INFO - Producer put 'c' into Buffer 1
+2025-05-28 17:31:37,536 - Thread-5 (move_thread) - INFO - Consumer moved 'X' from Buffer 1 to Buffer 2
+2025-05-28 17:31:37,537 - Thread-8 (get_thread) - INFO - Consumer got 'n' from Buffer 3
+2025-05-28 17:31:37,537 - Thread-7 (move_thread) - INFO - Consumer moved 'Z' from Buffer 1 to Buffer 3
+2025-05-28 17:31:37,787 - Thread-1 (producer_thread) - INFO - Producer put 'v' into Buffer 1
+2025-05-28 17:31:38,038 - Thread-1 (producer_thread) - INFO - Producer put 'i' into Buffer 1
+2025-05-28 17:31:38,288 - Thread-1 (producer_thread) - INFO - Producer put '8' into Buffer 1
+2025-05-28 17:31:38,537 - Thread-6 (get_thread) - INFO - Consumer got 'd' from Buffer 2
+2025-05-28 17:31:38,537 - Thread-5 (move_thread) - INFO - Consumer moved 'h' from Buffer 1 to Buffer 2
+2025-05-28 17:31:38,538 - Thread-8 (get_thread) - INFO - Consumer got 'R' from Buffer 3
+2025-05-28 17:31:38,538 - Thread-7 (move_thread) - INFO - Consumer moved 'L' from Buffer 1 to Buffer 3
+2025-05-28 17:31:38,538 - Thread-1 (producer_thread) - INFO - Producer put 'a' into Buffer 1
+2025-05-28 17:31:38,789 - Thread-1 (producer_thread) - INFO - Producer put 'Z' into Buffer 1
+2025-05-28 17:31:39,039 - Thread-1 (producer_thread) - INFO - Producer put '0' into Buffer 1
+2025-05-28 17:31:39,289 - Thread-1 (producer_thread) - INFO - Producer put '7' into Buffer 1
+2025-05-28 17:31:39,537 - Thread-6 (get_thread) - INFO - Consumer got 'O' from Buffer 2
+2025-05-28 17:31:39,538 - Thread-5 (move_thread) - INFO - Consumer moved '6' from Buffer 1 to Buffer 2
+2025-05-28 17:31:39,538 - Thread-8 (get_thread) - INFO - Consumer got 'V' from Buffer 3
+2025-05-28 17:31:39,538 - Thread-7 (move_thread) - INFO - Consumer moved 'c' from Buffer 1 to Buffer 3
+2025-05-28 17:31:39,540 - Thread-1 (producer_thread) - INFO - Producer put 'M' into Buffer 1
+2025-05-28 17:31:40,038 - Thread-1 (producer_thread) - INFO - Producer put 'e' into Buffer 1
+2025-05-28 17:31:40,289 - Thread-1 (producer_thread) - INFO - Producer put 'A' into Buffer 1
+2025-05-28 17:31:40,538 - Thread-6 (get_thread) - INFO - Consumer got 'e' from Buffer 2
+2025-05-28 17:31:40,538 - Thread-5 (move_thread) - INFO - Consumer moved 'v' from Buffer 1 to Buffer 2
+2025-05-28 17:31:40,539 - Thread-8 (get_thread) - INFO - Consumer got 'b' from Buffer 3
+2025-05-28 17:31:40,539 - Thread-7 (move_thread) - INFO - Consumer moved 'i' from Buffer 1 to Buffer 3
+2025-05-28 17:31:41,039 - Thread-1 (producer_thread) - INFO - Producer put 'c' into Buffer 1
+2025-05-28 17:31:41,289 - Thread-1 (producer_thread) - INFO - Producer put 'd' into Buffer 1
+2025-05-28 17:31:41,539 - Thread-6 (get_thread) - INFO - Consumer got 'X' from Buffer 2
+2025-05-28 17:31:41,539 - Thread-5 (move_thread) - INFO - Consumer moved '8' from Buffer 1 to Buffer 2
+2025-05-28 17:31:41,539 - Thread-8 (get_thread) - INFO - Consumer got 'Z' from Buffer 3
+2025-05-28 17:31:41,539 - Thread-7 (move_thread) - INFO - Consumer moved 'a' from Buffer 1 to Buffer 3
+2025-05-28 17:31:42,040 - Thread-1 (producer_thread) - INFO - Producer put 't' into Buffer 1
+2025-05-28 17:31:42,290 - Thread-1 (producer_thread) - INFO - Producer put 'm' into Buffer 1
+2025-05-28 17:31:42,539 - Thread-6 (get_thread) - INFO - Consumer got 'h' from Buffer 2
+2025-05-28 17:31:42,539 - Thread-5 (move_thread) - INFO - Consumer moved 'Z' from Buffer 1 to Buffer 2
+2025-05-28 17:31:42,540 - Thread-8 (get_thread) - INFO - Consumer got 'L' from Buffer 3
+2025-05-28 17:31:42,540 - Thread-7 (move_thread) - INFO - Consumer moved '0' from Buffer 1 to Buffer 3
+2025-05-28 17:31:43,041 - Thread-1 (producer_thread) - INFO - Producer put 'D' into Buffer 1
+2025-05-28 17:31:43,291 - Thread-1 (producer_thread) - INFO - Producer put 'j' into Buffer 1
+2025-05-28 17:31:43,540 - Thread-6 (get_thread) - INFO - Consumer got '6' from Buffer 2
+2025-05-28 17:31:43,540 - Thread-5 (move_thread) - INFO - Consumer moved '7' from Buffer 1 to Buffer 2
+2025-05-28 17:31:43,541 - Thread-8 (get_thread) - INFO - Consumer got 'c' from Buffer 3
+2025-05-28 17:31:43,541 - Thread-7 (move_thread) - INFO - Consumer moved 'M' from Buffer 1 to Buffer 3
+2025-05-28 17:31:44,041 - Thread-1 (producer_thread) - INFO - Producer put 'E' into Buffer 1
+2025-05-28 17:31:44,291 - Thread-1 (producer_thread) - INFO - Producer put 'x' into Buffer 1
+2025-05-28 17:31:44,540 - Thread-6 (get_thread) - INFO - Consumer got 'v' from Buffer 2
+2025-05-28 17:31:44,541 - Thread-5 (move_thread) - INFO - Consumer moved 'e' from Buffer 1 to Buffer 2
+2025-05-28 17:31:44,541 - Thread-8 (get_thread) - INFO - Consumer got 'i' from Buffer 3
+2025-05-28 17:31:44,541 - Thread-7 (move_thread) - INFO - Consumer moved 'A' from Buffer 1 to Buffer 3
+2025-05-28 17:31:45,042 - Thread-1 (producer_thread) - INFO - Producer put 'W' into Buffer 1
+2025-05-28 17:31:45,292 - Thread-1 (producer_thread) - INFO - Producer put 'K' into Buffer 1
+2025-05-28 17:31:45,541 - Thread-6 (get_thread) - INFO - Consumer got '8' from Buffer 2
+2025-05-28 17:31:45,542 - Thread-5 (move_thread) - INFO - Consumer moved 'c' from Buffer 1 to Buffer 2
+2025-05-28 17:31:45,542 - Thread-8 (get_thread) - INFO - Consumer got 'a' from Buffer 3
+2025-05-28 17:31:45,542 - Thread-7 (move_thread) - INFO - Consumer moved 'd' from Buffer 1 to Buffer 3
+2025-05-28 17:31:46,043 - Thread-1 (producer_thread) - INFO - Producer put 'z' into Buffer 1
+2025-05-28 17:31:46,293 - Thread-1 (producer_thread) - INFO - Producer put 'x' into Buffer 1
+2025-05-28 17:31:46,542 - Thread-6 (get_thread) - INFO - Consumer got 'Z' from Buffer 2
+2025-05-28 17:31:46,542 - Thread-5 (move_thread) - INFO - Consumer moved 't' from Buffer 1 to Buffer 2
+2025-05-28 17:31:46,543 - Thread-8 (get_thread) - INFO - Consumer got '0' from Buffer 3
+2025-05-28 17:31:46,543 - Thread-7 (move_thread) - INFO - Consumer moved 'm' from Buffer 1 to Buffer 3
+2025-05-28 17:31:47,043 - Thread-1 (producer_thread) - INFO - Producer put 't' into Buffer 1
+2025-05-28 17:31:47,262 - MainThread - INFO - 系统已停止
+2025-05-28 17:31:47,293 - Thread-1 (producer_thread) - INFO - Producer put 'I' into Buffer 1
+2025-05-28 17:31:47,543 - Thread-6 (get_thread) - INFO - Consumer got '7' from Buffer 2
+2025-05-28 17:31:47,543 - Thread-5 (move_thread) - INFO - Consumer moved 'D' from Buffer 1 to Buffer 2
+2025-05-28 17:31:47,544 - Thread-8 (get_thread) - INFO - Consumer got 'M' from Buffer 3
+2025-05-28 17:31:47,544 - Thread-7 (move_thread) - INFO - Consumer moved 'j' from Buffer 1 to Buffer 3
+2025-05-28 17:39:44,147 - MainThread - INFO - Buffer 1 initialized with size 8
+2025-05-28 17:39:44,148 - MainThread - INFO - Buffer 2 initialized with size 4
+2025-05-28 17:39:44,148 - MainThread - INFO - Buffer 3 initialized with size 4
+2025-05-28 17:39:45,480 - Thread-1 (producer_thread) - INFO - 生产者线程 140331647481536 启动
+2025-05-28 17:39:45,481 - Thread-2 (consumer_thread) - INFO - 消费者线程 1 140331639088832 启动
+2025-05-28 17:39:45,481 - Thread-3 (consumer_thread) - INFO - 消费者线程 2 140331630696128 启动
+2025-05-28 17:39:45,481 - Thread-1 (producer_thread) - INFO - Producer initialized for Buffer 1 with put_freq 4
+2025-05-28 17:39:45,482 - MainThread - INFO - 系统已启动
+2025-05-28 17:39:45,482 - Thread-2 (consumer_thread) - INFO - Consumer initialized for Buffer 2 with get_freq 1, move_freq 2
+2025-05-28 17:39:45,482 - Thread-3 (consumer_thread) - INFO - Consumer initialized for Buffer 3 with get_freq 1, move_freq 2
+2025-05-28 17:39:45,484 - Thread-4 (move_thread) - INFO - 消费者 1 的MOVE线程 140331144181440 启动
+2025-05-28 17:39:45,485 - Thread-5 (get_thread) - INFO - 消费者 1 的GET线程 140331135788736 启动
+2025-05-28 17:39:45,486 - Thread-6 (move_thread) - INFO - 消费者 2 的MOVE线程 140331127396032 启动
+2025-05-28 17:39:45,486 - Thread-7 (get_thread) - INFO - 消费者 2 的GET线程 140331119003328 启动
+2025-05-28 17:39:45,733 - Thread-1 (producer_thread) - INFO - Producer put 'p' into Buffer 1
+2025-05-28 17:39:45,983 - Thread-1 (producer_thread) - INFO - Producer put 'A' into Buffer 1
+2025-05-28 17:39:45,986 - Thread-4 (move_thread) - INFO - Consumer moved 'p' from Buffer 1 to Buffer 2
+2025-05-28 17:39:45,987 - Thread-6 (move_thread) - INFO - Consumer moved 'A' from Buffer 1 to Buffer 3
+2025-05-28 17:39:46,234 - Thread-1 (producer_thread) - INFO - Producer put 'c' into Buffer 1
+2025-05-28 17:39:46,484 - Thread-1 (producer_thread) - INFO - Producer put 't' into Buffer 1
+2025-05-28 17:39:46,486 - Thread-5 (get_thread) - INFO - Consumer got 'p' from Buffer 2
+2025-05-28 17:39:46,486 - Thread-4 (move_thread) - INFO - Consumer moved 'c' from Buffer 1 to Buffer 2
+2025-05-28 17:39:46,487 - Thread-7 (get_thread) - INFO - Consumer got 'A' from Buffer 3
+2025-05-28 17:39:46,488 - Thread-6 (move_thread) - INFO - Consumer moved 't' from Buffer 1 to Buffer 3
+2025-05-28 17:39:46,735 - Thread-1 (producer_thread) - INFO - Producer put '2' into Buffer 1
+2025-05-28 17:39:46,985 - Thread-1 (producer_thread) - INFO - Producer put 'l' into Buffer 1
+2025-05-28 17:39:46,987 - Thread-4 (move_thread) - INFO - Consumer moved '2' from Buffer 1 to Buffer 2
+2025-05-28 17:39:46,988 - Thread-6 (move_thread) - INFO - Consumer moved 'l' from Buffer 1 to Buffer 3
+2025-05-28 17:39:47,235 - Thread-1 (producer_thread) - INFO - Producer put 'D' into Buffer 1
+2025-05-28 17:39:47,486 - Thread-1 (producer_thread) - INFO - Producer put '0' into Buffer 1
+2025-05-28 17:39:47,487 - Thread-5 (get_thread) - INFO - Consumer got 'c' from Buffer 2
+2025-05-28 17:39:47,487 - Thread-4 (move_thread) - INFO - Consumer moved 'D' from Buffer 1 to Buffer 2
+2025-05-28 17:39:47,488 - Thread-7 (get_thread) - INFO - Consumer got 't' from Buffer 3
+2025-05-28 17:39:47,488 - Thread-6 (move_thread) - INFO - Consumer moved '0' from Buffer 1 to Buffer 3
+2025-05-28 17:39:47,736 - Thread-1 (producer_thread) - INFO - Producer put 'j' into Buffer 1
+2025-05-28 17:39:47,987 - Thread-1 (producer_thread) - INFO - Producer put '9' into Buffer 1
+2025-05-28 17:39:47,988 - Thread-4 (move_thread) - INFO - Consumer moved 'j' from Buffer 1 to Buffer 2
+2025-05-28 17:39:47,988 - Thread-6 (move_thread) - INFO - Consumer moved '9' from Buffer 1 to Buffer 3
+2025-05-28 17:39:48,238 - Thread-1 (producer_thread) - INFO - Producer put 'C' into Buffer 1
+2025-05-28 17:39:48,487 - Thread-5 (get_thread) - INFO - Consumer got '2' from Buffer 2
+2025-05-28 17:39:48,488 - Thread-1 (producer_thread) - INFO - Producer put 'A' into Buffer 1
+2025-05-28 17:39:48,488 - Thread-4 (move_thread) - INFO - Consumer moved 'C' from Buffer 1 to Buffer 2
+2025-05-28 17:39:48,488 - Thread-7 (get_thread) - INFO - Consumer got 'l' from Buffer 3
+2025-05-28 17:39:48,489 - Thread-6 (move_thread) - INFO - Consumer moved 'A' from Buffer 1 to Buffer 3
+2025-05-28 17:39:48,739 - Thread-1 (producer_thread) - INFO - Producer put 'Y' into Buffer 1
+2025-05-28 17:39:48,989 - Thread-4 (move_thread) - INFO - Consumer moved 'Y' from Buffer 1 to Buffer 2
+2025-05-28 17:39:48,989 - Thread-1 (producer_thread) - INFO - Producer put 'd' into Buffer 1
+2025-05-28 17:39:48,990 - Thread-6 (move_thread) - INFO - Consumer moved 'd' from Buffer 1 to Buffer 3
+2025-05-28 17:39:49,239 - Thread-1 (producer_thread) - INFO - Producer put 'K' into Buffer 1
+2025-05-28 17:39:49,487 - Thread-5 (get_thread) - INFO - Consumer got 'D' from Buffer 2
+2025-05-28 17:39:49,489 - Thread-7 (get_thread) - INFO - Consumer got '0' from Buffer 3
+2025-05-28 17:39:49,489 - Thread-4 (move_thread) - INFO - Consumer moved 'K' from Buffer 1 to Buffer 2
+2025-05-28 17:39:49,490 - Thread-1 (producer_thread) - INFO - Producer put '4' into Buffer 1
+2025-05-28 17:39:49,491 - Thread-6 (move_thread) - INFO - Consumer moved '4' from Buffer 1 to Buffer 3
+2025-05-28 17:39:49,741 - Thread-1 (producer_thread) - INFO - Producer put 'M' into Buffer 1
+2025-05-28 17:39:49,992 - Thread-1 (producer_thread) - INFO - Producer put 't' into Buffer 1
+2025-05-28 17:39:50,243 - Thread-1 (producer_thread) - INFO - Producer put 'q' into Buffer 1
+2025-05-28 17:39:50,488 - Thread-5 (get_thread) - INFO - Consumer got 'j' from Buffer 2
+2025-05-28 17:39:50,488 - Thread-4 (move_thread) - INFO - Consumer moved 'M' from Buffer 1 to Buffer 2
+2025-05-28 17:39:50,489 - Thread-7 (get_thread) - INFO - Consumer got '9' from Buffer 3
+2025-05-28 17:39:50,489 - Thread-6 (move_thread) - INFO - Consumer moved 't' from Buffer 1 to Buffer 3
+2025-05-28 17:39:50,493 - Thread-1 (producer_thread) - INFO - Producer put 'K' into Buffer 1
+2025-05-28 17:39:50,744 - Thread-1 (producer_thread) - INFO - Producer put 'X' into Buffer 1
+2025-05-28 17:39:50,994 - Thread-1 (producer_thread) - INFO - Producer put 'I' into Buffer 1
+2025-05-28 17:39:51,245 - Thread-1 (producer_thread) - INFO - Producer put 'N' into Buffer 1
+2025-05-28 17:39:51,489 - Thread-5 (get_thread) - INFO - Consumer got 'C' from Buffer 2
+2025-05-28 17:39:51,489 - Thread-4 (move_thread) - INFO - Consumer moved 'q' from Buffer 1 to Buffer 2
+2025-05-28 17:39:51,490 - Thread-7 (get_thread) - INFO - Consumer got 'A' from Buffer 3
+2025-05-28 17:39:51,490 - Thread-6 (move_thread) - INFO - Consumer moved 'K' from Buffer 1 to Buffer 3
+2025-05-28 17:39:51,495 - Thread-1 (producer_thread) - INFO - Producer put '1' into Buffer 1
+2025-05-28 17:39:51,746 - Thread-1 (producer_thread) - INFO - Producer put 'E' into Buffer 1
+2025-05-28 17:39:51,996 - Thread-1 (producer_thread) - INFO - Producer put 'n' into Buffer 1
+2025-05-28 17:39:52,246 - Thread-1 (producer_thread) - INFO - Producer put 'r' into Buffer 1
+2025-05-28 17:39:52,490 - Thread-5 (get_thread) - INFO - Consumer got 'Y' from Buffer 2
+2025-05-28 17:39:52,490 - Thread-4 (move_thread) - INFO - Consumer moved 'X' from Buffer 1 to Buffer 2
+2025-05-28 17:39:52,491 - Thread-7 (get_thread) - INFO - Consumer got 'd' from Buffer 3
+2025-05-28 17:39:52,491 - Thread-6 (move_thread) - INFO - Consumer moved 'I' from Buffer 1 to Buffer 3
+2025-05-28 17:39:52,497 - Thread-1 (producer_thread) - INFO - Producer put 'k' into Buffer 1
+2025-05-28 17:39:52,747 - Thread-1 (producer_thread) - INFO - Producer put 'o' into Buffer 1
+2025-05-28 17:39:52,997 - Thread-1 (producer_thread) - INFO - Producer put 'F' into Buffer 1
+2025-05-28 17:39:53,093 - MainThread - INFO - 系统已停止
+2025-05-28 17:39:53,248 - Thread-1 (producer_thread) - INFO - Producer put '1' into Buffer 1
+2025-05-28 17:39:53,491 - Thread-5 (get_thread) - INFO - Consumer got 'K' from Buffer 2
+2025-05-28 17:39:53,491 - Thread-4 (move_thread) - INFO - Consumer moved 'N' from Buffer 1 to Buffer 2
+2025-05-28 17:39:53,492 - Thread-7 (get_thread) - INFO - Consumer got '4' from Buffer 3
+2025-05-28 17:39:53,492 - Thread-6 (move_thread) - INFO - Consumer moved '1' from Buffer 1 to Buffer 3
