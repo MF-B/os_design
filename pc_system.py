@@ -7,6 +7,19 @@ from buffer import Buffer, Producer, Consumer
 # 获取一个 logger 实例
 logger = logging.getLogger(__name__)
 
+class QtLogHandler(logging.Handler):
+    def __init__(self, log_signal_emitter):
+        super().__init__()
+        self.log_signal_emitter = log_signal_emitter
+        self.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(name)s - %(message)s'))
+
+    def emit(self, record):
+        try:
+            msg = self.format(record)
+            self.log_signal_emitter.emit(msg)
+        except Exception:
+            self.handleError(record)
+
 class WorkerSignals(QObject):
     """定义信号类，用于线程和主UI通信"""
     buffer_update = pyqtSignal(str, str, str)
@@ -17,6 +30,9 @@ class ProducerConsumerSystem:
     def __init__(self):
         # 创建信号对象
         self.signals = WorkerSignals()
+
+        # logging模块的日志路由到UI
+        self._setup_ui_logging()
         
         # 创建缓冲区
         self.buffer1 = Buffer(8, 1)
@@ -33,6 +49,20 @@ class ProducerConsumerSystem:
         # 控制线程的标志
         self.running = False
         self.threads = []
+
+    def _setup_ui_logging(self):
+        """配置logging模块,使其日志消息通过信号发送到UI"""
+        qt_handler = QtLogHandler(self.signals.log_message)
+        qt_handler.setLevel(logging.INFO)  # 你可以根据需要设置不同的日志级别
+
+        """
+        将处理器添加到根logger,以捕获所有模块的日志
+        或者你可以选择性地添加到特定的logger,例如:
+        logging.getLogger('buffer').addHandler(qt_handler)
+        logging.getLogger(__name__).addHandler(qt_handler) # __name__ 在这里是 'pc_system'
+        logging.getLogger().addHandler(qt_handler)
+        """
+        logging.getLogger().addHandler(qt_handler)
     
     def start_system(self):
         """启动系统"""
@@ -179,21 +209,38 @@ class ProducerConsumerSystem:
     
     def resize_buffer(self, buffer_id, size):
         """调整缓冲区大小"""
-        def resize_and_copy(old_buffer, new_size, new_id):
-            new_buffer = Buffer(new_size, new_id)
-            with old_buffer.lock:
-                for item in list(old_buffer.data):
-                    if new_buffer.can_put():
-                        new_buffer.put(item)
-            return new_buffer
-
+        
+        target_buffer = None
         if buffer_id == 1:
-            self.buffer1 = resize_and_copy(self.buffer1, size, 1)
+            target_buffer = self.buffer1
         elif buffer_id == 2:
-            self.buffer2 = resize_and_copy(self.buffer2, size, 2)
+            target_buffer = self.buffer2
+        elif buffer_id == 3:
+            target_buffer = self.buffer3
+        
+        if not target_buffer:
+            log_msg = f"调整缓冲区大小失败：无效的缓冲区ID {buffer_id}。"
+            self.signals.log_message.emit(log_msg)
+            logger.warning(log_msg)
+            return
+
+        if not isinstance(size, int) or size <= 0:
+            log_msg = f"调整缓冲区 {buffer_id} 大小失败：大小 '{size}' 必须是一个正整数。"
+            self.signals.log_message.emit(log_msg)
+            logger.warning(log_msg)
+            return
+
+        # 调用 Buffer 实例的 resize 方法
+        success = target_buffer.resize(size)
+        
+        if success:
+            log_msg = f"缓冲区 {buffer_id} 大小已成功调整为: {size}。"
+            self.signals.log_message.emit(log_msg)
+            logger.info(log_msg)
         else:
-            self.buffer3 = resize_and_copy(self.buffer3, size, 3)
-                
-        log_msg = f"缓冲区 {buffer_id} 大小调整为: {size}"
-        self.signals.log_message.emit(log_msg)
-        logger.info(log_msg)
+            # 此情况主要用于 Buffer.resize 内部发现问题 (例如，无效大小),
+            # 尽管 pc_system 也已检查。
+            # Buffer.resize 方法本身会记录其警告。
+            log_msg = f"尝试调整缓冲区 {buffer_id} 大小为 {size}，但操作未完成 (详见缓冲区日志)。"
+            self.signals.log_message.emit(log_msg)
+            logger.warning(log_msg)

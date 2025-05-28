@@ -42,6 +42,31 @@ class Buffer:
             logger.debug(f"Buffer {self.id} get data: {data}, current size: {len(self.data)}")
             self.condition.notify_all()
             return data
+        
+    def resize(self, new_size):
+        """
+        调整缓冲区的大小。
+        如果新大小小于当前元素数量，则保留最早的元素。
+        """
+        with self.condition:
+            if not isinstance(new_size, int) or new_size <= 0:
+                logger.warning(f"Buffer {self.id} resize: 无效的大小 {new_size}。必须是正整数。")
+                return False # 表示操作失败
+
+            current_items = list(self.data)
+            
+            # 如果缩小缓冲区，保留最左边（最早）的元素
+            if new_size < len(current_items):
+                items_to_keep = current_items[:new_size]
+            else:
+                items_to_keep = current_items # 如果扩大或大小不变，保留所有元素
+            
+            self.data = deque(items_to_keep, maxlen=new_size)
+            
+            logger.info(f"Buffer {self.id} 已调整大小为 {new_size}。当前元素: {len(self.data)}/{self.data.maxlen}.")
+            # 通知所有等待的线程，因为缓冲区的容量和/或内容可能已更改
+            self.condition.notify_all()
+            return True
     
     def __str__(self):
         return f"Buffer{self.id} {list(self.data)}"
@@ -51,6 +76,15 @@ class Producer:
         self.buffer = buffer
         self.put_freq = max(put_freq, 0.1)
         logger.info(f"Producer initialized for Buffer {self.buffer.id} with put_freq {self.put_freq}")
+
+    def set_put_freq(self, freq):
+        """设置生产者放入数据的频率"""
+        if freq <= 0:
+            logger.warning("生产者频率必须大于0，已设置为默认值2。")
+            self.put_freq = 2
+        else:
+            self.put_freq = freq
+        logger.info(f"Producer put frequency set to {self.put_freq}")
     
     def put(self):
         time.sleep(1 / self.put_freq)
@@ -69,6 +103,24 @@ class Consumer:
         self.get_freq = max(get_freq, 0.1)
         self.move_freq = max(move_freq, 0.1)
         logger.info(f"Consumer initialized for Buffer {self.buffer.id} with get_freq {self.get_freq}, move_freq {self.move_freq}")
+
+    def set_get_freq(self, freq):
+        """设置消费者获取数据的频率"""
+        if freq <= 0:
+            logger.warning("消费者获取频率必须大于0，已设置为默认值2。")
+            self.get_freq = 2
+        else:
+            self.get_freq = freq
+        logger.info(f"Consumer get frequency set to {self.get_freq}")
+
+    def set_move_freq(self, freq):
+        """设置消费者移动数据的频率"""
+        if freq <= 0:
+            logger.warning("消费者移动频率必须大于0，已设置为默认值2。")
+            self.move_freq = 2
+        else:
+            self.move_freq = freq
+        logger.info(f"Consumer move frequency set to {self.move_freq}")
     
     def get(self):
         time.sleep(1 / self.get_freq)
