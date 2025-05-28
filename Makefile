@@ -15,7 +15,7 @@ run:
 
 .PHONY: ui
 ui:
-	$(PYTHON) $(MAIN_DIR)/ui.py
+	$(PYTHON) $(MAIN_DIR)/pc_main.py
 
 # 运行测试
 .PHONY: test
